@@ -7,7 +7,7 @@ function AppLayout() {
 		<div>
 			<Header />
 			<main>
-				<h1>Content</h1>
+				<h1 className="text-2xl text-red-400 ">Content</h1>
 				<Outlet />
 			</main>
 
