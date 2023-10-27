@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function Button({ disabled, children, to, type }) {
   const base =
     "inline-block rounded-full font-semibold tracking-wide transition-colors duration-300 focus:outline-none focus:ring  focus:ring-offset-1 disabled:cursor-not-allowed border-2 ";
-  const normal = base + "px-4 py-2 md:px-6 md:py-3 lg:px-8  ";
+  const normal = base + "px-4 py-2.5 md:px-8  ";
   const styles = {
     red:
       normal +
