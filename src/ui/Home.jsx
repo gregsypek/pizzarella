@@ -1,5 +1,40 @@
+import hero from "../images/hero_pizza.png";
+import Button from "./Button";
+
 function Home() {
-  return <div>Home</div>;
+  return (
+    <div className="relative mx-auto max-w-[1440px] p-6 py-32  sm:py-48 lg:px-8 lg:py-56">
+      <div className=" absolute bottom-56 right-0 top-0 w-1/4 rounded-b-lg bg-accent100" />
+      <div
+        className=" flex
+      "
+      >
+        <div className=" min-w-[190px] text-left sm:min-w-[220px] md:min-w-[380px]">
+          <h1 className="text-5xl font-bold tracking-tight text-black sm:text-7xl ">
+            Delicious Pizza
+          </h1>
+          <p className="mt-5 text-2xl font-bold leading-8 text-text200 md:text-4xl md:font-normal">
+            Delivered Right to
+            <span className=" block">Yours Doorstep</span>
+          </p>
+          <p className="mt-8  max-w-fit text-lg lg:max-w-[80%]" id="feature">
+            Craving a mouthwatering pizza? Look no further! Our delivery service
+            brings you the best pizza in town, made with fresh ingredients and
+            topped with love
+          </p>
+          <div className="mt-14 ">
+            <Button type="red"> Order now</Button>
+          </div>
+        </div>
+
+        <img
+          className=" relative z-50 ms-10 mt-28 h-full w-full flex-1 object-cover md:-mt-8 lg:-mt-14"
+          src={hero}
+          alt="pizza"
+        />
+      </div>
+    </div>
+  );
 }
 
 export default Home;

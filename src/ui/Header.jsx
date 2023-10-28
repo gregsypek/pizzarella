@@ -16,7 +16,7 @@ const navigation = [
 function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   return (
-    <header className="absolute inset-x-0 top-0 z-50 mx-auto max-w-7xl">
+    <header className="absolute inset-x-0 top-0 z-50 mx-auto max-w-[1440px]">
       <nav
         className="flex items-center justify-between p-6 lg:px-8"
         aria-label="Global"
@@ -25,7 +25,7 @@ function Header() {
           <Link to="/" className="-m-1.5 flex items-center  p-1.5">
             <span className="sr-only">Pizzarella</span>
             <img className="h-12 w-auto" src={logo} alt="logo" />
-            <span className="mx-3 text-base ">Pizzarella</span>
+            <span className="mx-3 text-lg ">Pizzarella</span>
           </Link>
         </div>
         <div className="flex lg:hidden">
@@ -35,7 +35,7 @@ function Header() {
             onClick={() => setMobileMenuOpen(true)}
           >
             <span className="sr-only">Open main menu</span>
-            <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+            <Bars3Icon className="h-8 w-8" aria-hidden="true" />
           </button>
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
@@ -77,7 +77,7 @@ function Header() {
               onClick={() => setMobileMenuOpen(false)}
             >
               <span className="sr-only">Close menu</span>
-              <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+              <XMarkIcon className="h-8 w-8" aria-hidden="true" />
             </button>
           </div>
           <div className="mt-6 flow-root">

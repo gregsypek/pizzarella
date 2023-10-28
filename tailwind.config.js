@@ -3,7 +3,7 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     fontFamily: {
-      sans: "'Noto Sans', 'sans-serif'",
+      sans: "Martel Sans",
     },
     extend: {
       colors: {
