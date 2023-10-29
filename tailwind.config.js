@@ -23,6 +23,9 @@ export default {
       height: {
         screen: "100dvh",
       },
+      screens: {
+        myCustom: "1192px",
+      },
     },
   },
   plugins: [],

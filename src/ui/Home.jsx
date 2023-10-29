@@ -4,14 +4,14 @@ import pizza1 from "../images/feat_pizza1.png";
 import pizza2 from "../images/feat_pizza2.png";
 import pizza3 from "../images/feat_pizza3.png";
 
-// import pizzaBg from "../images/feat-bg.svg";
+import pizzaBg from "../images/cta-bg.svg";
 
 function Home() {
   return (
     <>
       <section
         id="hero"
-        className=" mx-auto h-screen max-w-[1440px] p-6 pt-36  sm:pt-48 lg:px-8 lg:pt-60"
+        className="mx-auto h-screen max-w-[1440px] p-6 pt-36  sm:pt-48 lg:px-8 lg:pt-60"
       >
         <div className="absolute bottom-56 right-0 top-0 w-1/4 rounded-b-lg bg-accent100" />
         <div
@@ -47,9 +47,10 @@ function Home() {
         className=" absolute left-0 -z-[600] hidden h-full w-full overflow-visible bg-cover bg-center bg-no-repeat  xl:block"
         style={{ backgroundImage: `url(${pizzaBg})` }}
       /> */}
-      <div className="absolute left-0 -z-50 h-[150px] w-3/4  rounded-br-xl rounded-tr-xl bg-accent100" />
-      <section id="feature" className=" mx-auto max-w-[1440px]  p-6">
-        <div className="relative top-0 h-full p-2 text-left sm:text-center">
+      {/* background bar */}
+      <div className="absolute left-0 -z-50 h-[150px] w-3/4 rounded-br-xl rounded-tr-xl bg-accent100" />
+      <section id="feature" className=" mx-auto max-w-[1440px] p-6 lg:pb-40">
+        <div className="relative top-0 h-full p-2 text-left">
           <h1 className="text-5xl font-bold tracking-tight text-black sm:text-5xl ">
             Discover
           </h1>
@@ -69,9 +70,9 @@ function Home() {
               <img
                 src={pizza1}
                 alt="pizza with basil "
-                className="relative -z-10"
+                className="relative -z-10 h-[70%] w-auto md:h-full "
               />
-              <div className="-left-50 absolute right-0  -z-20 mt-40 flex h-[200px] w-screen items-center justify-center rounded-xl border-2 border-bg300 bg-bg100 p-2 sm:static sm:mt-0 sm:h-auto sm:w-full">
+              <div className="-left-50 absolute right-0  -z-20 mt-40 flex h-[200px] w-screen items-center justify-center rounded-xl border-0  border-bg300 bg-bg200 p-2 sm:static sm:mt-0 sm:h-auto sm:w-full md:border-2 lg:bg-bg100">
                 <figcaption className="w-screen -translate-x-8 translate-y-20 p-2 text-right text-base font-medium sm:static sm:w-full sm:translate-y-0 ">
                   Fast delivery in your door
                 </figcaption>
@@ -101,7 +102,7 @@ function Home() {
             </figure>
           </div>
           {/* pizza2 */}
-          <div className="  flex w-[30%] min-w-[350px] flex-col xl:mt-[5rem]">
+          <div className="  flex w-[30%] min-w-[350px] flex-col md:mt-[5rem]">
             <figure className="relative flex   flex-col items-center justify-center ">
               {/* pizza gradient */}
               <div
@@ -111,9 +112,9 @@ function Home() {
               <img
                 src={pizza2}
                 alt="pizza with cheese "
-                className="relative -z-10 "
+                className="relative -z-10 h-[70%] w-auto md:h-full"
               />
-              <div className="-left-50 absolute left-0  -z-20 mt-40 flex h-[200px] w-screen items-center justify-center rounded-xl border-2 border-bg300 bg-bg100 p-2 sm:static sm:mt-0 sm:h-auto sm:w-full ">
+              <div className="-left-50 absolute left-0  -z-20 mt-40 flex h-[200px] w-screen items-center justify-center rounded-xl border-0  border-bg300 bg-bg200 p-2 sm:static sm:mt-0 sm:h-auto sm:w-full md:border-2 lg:bg-bg100 ">
                 <figcaption className="w-screen translate-x-12  translate-y-20   p-2 ps-2 text-left text-base font-medium  sm:static sm:w-full sm:translate-y-0 ">
                   Convenient Online Ordering
                 </figcaption>
@@ -143,7 +144,7 @@ function Home() {
             </figure>
           </div>
           {/* pizza3 */}
-          <div className="  flex w-[30%] min-w-[350px] flex-col  xl:mt-[11rem]">
+          <div className="  myCustom:mt-[11rem] flex w-[30%] min-w-[350px]  flex-col">
             <figure className="relative flex h-full w-full flex-col items-center justify-center ">
               {/* pizza gradient */}
               <div
@@ -153,9 +154,9 @@ function Home() {
               <img
                 src={pizza3}
                 alt="pizza with salami "
-                className="relative -z-10"
+                className="relative -z-10 h-[70%] w-auto md:h-full"
               />
-              <div className="-left-50 absolute right-0  -z-20 mt-40 flex h-[200px] w-screen items-center justify-center rounded-xl border-2 border-bg300 bg-bg100  p-2 sm:static sm:mt-0 sm:h-auto sm:w-full ">
+              <div className="-left-50 absolute right-0  -z-20 mt-40 flex h-[200px] w-screen items-center justify-center rounded-xl border-0  border-bg300 bg-bg200 p-2 sm:static sm:mt-0 sm:h-auto sm:w-full md:border-2 lg:bg-bg100">
                 <figcaption className="w-screen -translate-x-8 translate-y-20 p-2 text-right text-base font-medium sm:static sm:w-full sm:translate-y-0 ">
                   Delicious Pizza Selection
                 </figcaption>
@@ -183,6 +184,28 @@ function Home() {
                 </div>
               </div>
             </figure>
+          </div>
+        </div>
+      </section>
+      <div className=" absolute left-0 -z-50 mt-32 h-[500px] w-full overflow-visible  rounded-bl-xl rounded-tl-xl bg-bg200 sm:mt-16 md:left-2/4  md:mt-10 xl:mt-0 " />
+      <section
+        id="cta"
+        className=" mx-auto mt-32 h-[400px] max-w-[1440px] bg-right bg-no-repeat p-6 sm:mt-16 md:mt-10 xl:mt-0"
+        style={{
+          backgroundImage: `url(${pizzaBg})`,
+        }}
+      >
+        <div className="  h-full w-full rounded-xl  p-10 text-left ">
+          <h1 className="text-5xl font-bold tracking-tight text-black sm:text-5xl ">
+            Delicious Pizza
+          </h1>
+          <p className="mt-2 w-3/5 text-lg font-bold capitalize leading-8 text-text200 md:w-2/3 md:text-2xl md:font-normal">
+            Explore our menu and satisfy your pizza cravings with our fresh
+            ingredients
+          </p>
+          <div className="mt-20 flex justify-center space-x-10 md:mt-40">
+            <Button type="empty">Order</Button>
+            <Button type="gray">Menu</Button>
           </div>
         </div>
       </section>
