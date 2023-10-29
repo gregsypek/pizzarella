@@ -14,11 +14,12 @@ function AppLayout() {
         <Header />
       </nav>
 
-      <main className="mx-auto max-w-7xl">
+      <main className="mx-auto max-w-7xl bg">
         <Outlet />
       </main>
-
-      <Footer />
+      <footer className="mx-auto max-w-7xl">
+        <Footer />
+      </footer>
     </div>
   );
 }

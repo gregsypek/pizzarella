@@ -4,12 +4,14 @@ import pizza1 from "../images/feat_pizza1.png";
 import pizza2 from "../images/feat_pizza2.png";
 import pizza3 from "../images/feat_pizza3.png";
 
+// import pizzaBg from "../images/feat-bg.svg";
+
 function Home() {
   return (
     <>
       <section
         id="hero"
-        className=" mx-auto max-w-[1440px] p-6 py-36  sm:pt-48 lg:px-8 lg:pt-56"
+        className=" mx-auto h-screen max-w-[1440px] p-6 pt-36  sm:pt-48 lg:px-8 lg:pt-60"
       >
         <div className="absolute bottom-56 right-0 top-0 w-1/4 rounded-b-lg bg-accent100" />
         <div
@@ -41,8 +43,13 @@ function Home() {
           />
         </div>
       </section>
-      <section id="feature" className=" mx-auto max-w-[1440px] p-6">
-        <div className=" block  text-left sm:text-center">
+      {/* <div
+        className=" absolute left-0 -z-[600] hidden h-full w-full overflow-visible bg-cover bg-center bg-no-repeat  xl:block"
+        style={{ backgroundImage: `url(${pizzaBg})` }}
+      /> */}
+      <div className="absolute left-0 -z-50 h-[150px] w-3/4  rounded-br-xl rounded-tr-xl bg-accent100" />
+      <section id="feature" className=" mx-auto max-w-[1440px]  p-6">
+        <div className="relative top-0 h-full p-2 text-left sm:text-center">
           <h1 className="text-5xl font-bold tracking-tight text-black sm:text-5xl ">
             Discover
           </h1>
@@ -56,7 +63,7 @@ function Home() {
             <figure className="relative flex  w-full flex-col items-center justify-center ">
               {/* pizza gradient */}
               <div
-                class="absolute -left-5 top-0 -z-50 hidden h-[350px] w-[350px] rounded-full bg-gradient-to-t from-[#FFF3B0] to-transparent lg:block
+                class="absolute -left-5 top-0 -z-50 hidden h-[350px] w-[350px] rounded-full bg-gradient-to-t from-[#F3F3F3] to-transparent lg:block
               "
               />
               <img
@@ -64,7 +71,7 @@ function Home() {
                 alt="pizza with basil "
                 className="relative -z-10"
               />
-              <div className="-left-50 absolute right-0  -z-20 mt-40 flex h-[200px] w-screen items-center justify-center rounded-xl bg-bg200 p-2 sm:static sm:mt-0 sm:h-auto sm:w-full">
+              <div className="-left-50 absolute right-0  -z-20 mt-40 flex h-[200px] w-screen items-center justify-center rounded-xl border-2 border-bg300 bg-bg100 p-2 sm:static sm:mt-0 sm:h-auto sm:w-full">
                 <figcaption className="w-screen -translate-x-8 translate-y-20 p-2 text-right text-base font-medium sm:static sm:w-full sm:translate-y-0 ">
                   Fast delivery in your door
                 </figcaption>
@@ -106,13 +113,13 @@ function Home() {
                 alt="pizza with cheese "
                 className="relative -z-10 "
               />
-              <div className="-left-50 absolute left-0  -z-20 mt-40 flex h-[200px] w-screen items-center justify-center rounded-xl bg-bg200 p-2 sm:static sm:mt-0 sm:h-auto sm:w-full">
-                <figcaption className="w-screen translate-x-12  translate-y-20 p-2 ps-2 text-left text-base font-medium sm:static sm:w-full sm:translate-y-0 ">
+              <div className="-left-50 absolute left-0  -z-20 mt-40 flex h-[200px] w-screen items-center justify-center rounded-xl border-2 border-bg300 bg-bg100 p-2 sm:static sm:mt-0 sm:h-auto sm:w-full ">
+                <figcaption className="w-screen translate-x-12  translate-y-20   p-2 ps-2 text-left text-base font-medium  sm:static sm:w-full sm:translate-y-0 ">
                   Convenient Online Ordering
                 </figcaption>
                 <div className="h-16  sm:relative">
                   {/* icon gradient */}
-                  <div className="absolute -left-16 z-40 h-16 w-screen">
+                  <div className="absolute -left-16 z-40 h-16 ">
                     <div
                       class="relative bottom-0 left-20 z-20 h-12  w-12 rounded-full bg-gradient-to-t from-[#FFF3B0] to-transparent sm:bottom-0 sm:left-0 lg:hidden
                     "
@@ -140,7 +147,7 @@ function Home() {
             <figure className="relative flex h-full w-full flex-col items-center justify-center ">
               {/* pizza gradient */}
               <div
-                class="absolute right-0 top-0 -z-50 hidden h-[350px] w-[350px] rounded-full bg-gradient-to-t from-[#FFF3B0] to-transparent lg:block
+                class="absolute right-0 top-0 -z-50 hidden h-[350px] w-[350px] rounded-full bg-gradient-to-t from-[#F3F3F3] to-transparent lg:block
               "
               />
               <img
@@ -148,7 +155,7 @@ function Home() {
                 alt="pizza with salami "
                 className="relative -z-10"
               />
-              <div className="-left-50 absolute right-0  -z-20 mt-40 flex h-[200px] w-screen items-center justify-center rounded-xl bg-bg200 p-2 sm:static sm:mt-0 sm:h-auto sm:w-full">
+              <div className="-left-50 absolute right-0  -z-20 mt-40 flex h-[200px] w-screen items-center justify-center rounded-xl border-2 border-bg300 bg-bg100  p-2 sm:static sm:mt-0 sm:h-auto sm:w-full ">
                 <figcaption className="w-screen -translate-x-8 translate-y-20 p-2 text-right text-base font-medium sm:static sm:w-full sm:translate-y-0 ">
                   Delicious Pizza Selection
                 </figcaption>
