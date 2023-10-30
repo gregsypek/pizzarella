@@ -11,14 +11,18 @@ function Home() {
     <>
       <section
         id="hero"
-        className="mx-auto h-screen max-w-[1440px] p-6 pt-36  sm:pt-48 lg:px-8 lg:pt-60"
+        className="container mx-auto flex h-auto  max-w-[1440px] flex-col items-center gap-10 p-6 px-7 pt-44  sm:pt-48  lg:flex-row  lg:px-8 lg:pt-60"
       >
+        {/* <section
+        id="hero"
+        className="mx-auto h-screen max-w-[1440px]  p-6 pt-36 sm:pt-48  lg:px-8 lg:pt-60"
+      > */}
         <div className="absolute bottom-56 right-0 top-0 w-1/4 rounded-b-lg bg-accent100" />
         <div
           className=" flex
       "
         >
-          <div className=" min-w-[190px] text-left sm:min-w-[220px] md:min-w-[380px]">
+          <div className=" min-w-[190px]  text-left sm:min-w-[220px] md:min-w-[380px]">
             <h1 className="text-5xl font-bold tracking-tight text-black sm:text-7xl ">
               Delicious Pizza
             </h1>
@@ -37,7 +41,7 @@ function Home() {
           </div>
 
           <img
-            className=" relative z-50 ms-10 mt-28 h-full w-full flex-1 object-cover md:-mt-8 lg:-mt-14"
+            className=" relative z-50 ms-10 mt-28 h-full w-full flex-1 object-cover md:-mt-8 lg:-mt-14 "
             src={hero}
             alt="pizza"
           />
@@ -49,7 +53,10 @@ function Home() {
       /> */}
       {/* background bar */}
       <div className="absolute left-0 -z-50 h-[150px] w-3/4 rounded-br-xl rounded-tr-xl bg-accent100" />
-      <section id="feature" className=" mx-auto max-w-[1440px] p-6 lg:pb-40">
+      <section
+        id="feature"
+        className=" mx-auto max-w-[1440px] overflow-hidden  p-6 lg:pb-40"
+      >
         <div className="relative top-0 h-full p-2 text-left">
           <h1 className="text-5xl font-bold tracking-tight text-black sm:text-5xl ">
             Discover
@@ -78,7 +85,7 @@ function Home() {
                 </figcaption>
                 <div className="h-16 w-16  sm:relative">
                   {/* icon gradient */}
-                  <div className="absolute z-40 w-full">
+                  <div className="absolute z-40 ">
                     <div
                       class="relative bottom-0 left-0 z-20 h-12  w-12 rounded-full bg-gradient-to-t from-[#FFF3B0] to-transparent sm:bottom-0  lg:hidden
                     "
@@ -115,10 +122,10 @@ function Home() {
                 className="relative -z-10 h-[70%] w-auto md:h-full"
               />
               <div className="-left-50 absolute left-0  -z-20 mt-40 flex h-[200px] w-screen items-center justify-center rounded-xl border-0  border-bg300 bg-bg200 p-2 sm:static sm:mt-0 sm:h-auto sm:w-full md:border-2 lg:bg-bg100 ">
-                <figcaption className="w-screen translate-x-12  translate-y-20   p-2 ps-2 text-left text-base font-medium  sm:static sm:w-full sm:translate-y-0 ">
+                <figcaption className="w-screen translate-x-12  translate-y-20    p-2 ps-2 text-left text-base  font-medium sm:static   sm:translate-y-0 ">
                   Convenient Online Ordering
                 </figcaption>
-                <div className="h-16  sm:relative">
+                <div className="h-16  bg-red-300  sm:relative">
                   {/* icon gradient */}
                   <div className="absolute -left-16 z-40 h-16 ">
                     <div
@@ -144,7 +151,7 @@ function Home() {
             </figure>
           </div>
           {/* pizza3 */}
-          <div className="  myCustom:mt-[11rem] flex w-[30%] min-w-[350px]  flex-col">
+          <div className="  flex w-[30%] min-w-[350px] flex-col  myCustom:mt-[11rem]">
             <figure className="relative flex h-full w-full flex-col items-center justify-center ">
               {/* pizza gradient */}
               <div
@@ -156,13 +163,13 @@ function Home() {
                 alt="pizza with salami "
                 className="relative -z-10 h-[70%] w-auto md:h-full"
               />
-              <div className="-left-50 absolute right-0  -z-20 mt-40 flex h-[200px] w-screen items-center justify-center rounded-xl border-0  border-bg300 bg-bg200 p-2 sm:static sm:mt-0 sm:h-auto sm:w-full md:border-2 lg:bg-bg100">
+              <div className="-left-50 absolute right-0  -z-20 mt-40 flex h-[200px] items-center justify-center rounded-xl border-0   border-bg300 bg-bg200 p-2 sm:static sm:mt-0 sm:h-auto sm:w-full md:border-2 lg:bg-bg100">
                 <figcaption className="w-screen -translate-x-8 translate-y-20 p-2 text-right text-base font-medium sm:static sm:w-full sm:translate-y-0 ">
                   Delicious Pizza Selection
                 </figcaption>
                 <div className="h-16 w-16  sm:relative">
                   {/* icon gradient */}
-                  <div className="absolute z-40 w-full">
+                  <div className="absolute z-40 ">
                     <div
                       class="relative bottom-0 left-0 z-20 h-12  w-12 rounded-full bg-gradient-to-t from-[#FFF3B0] to-transparent sm:bottom-0  lg:hidden
                     "
@@ -187,7 +194,7 @@ function Home() {
           </div>
         </div>
       </section>
-      <div className=" absolute left-0 -z-50 mt-32 h-[500px] w-full overflow-visible  rounded-bl-xl rounded-tl-xl bg-bg200 sm:mt-16 md:left-2/4  md:mt-10 xl:mt-0 " />
+      <div className=" absolute left-0 right-0 -z-50 mt-32 h-[500px] overflow-hidden rounded-bl-xl rounded-tl-xl bg-accent100 sm:mt-16 md:left-2/4  md:mt-10 xl:mt-0 " />
       <section
         id="cta"
         className=" mx-auto mt-32 h-[400px] max-w-[1440px] bg-right bg-no-repeat p-6 sm:mt-16 md:mt-10 xl:mt-0"

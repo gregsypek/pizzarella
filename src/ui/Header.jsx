@@ -6,6 +6,7 @@ import Button from "./Button";
 import { useState } from "react";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { navigation } from "../utils/navigation";
 <svg
   xmlns="http://www.w3.org/2000/svg"
   viewBox="0 0 24 24"
@@ -19,21 +20,15 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
   />
 </svg>;
 
-const navigation = [
-  { name: "About Us", to: "/#feature" },
-  { name: "Menu", to: "/menu" },
-  { name: "Order", to: "/order/new" },
-];
-
 function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   return (
-    <header className="absolute inset-x-0 top-0 z-50 mx-auto max-w-[1440px]">
+    <header className="absolute inset-x-0 top-0 z-50 mx-auto max-w-[1440px]  overflow-x-hidden ">
       <nav
         className="flex items-center justify-between p-6 lg:px-8"
         aria-label="Global"
       >
-        <div className="flex lg:flex-1">
+        <div className="flex overflow-hidden lg:flex-1">
           <Link to="/" className="-m-1.5 flex items-center  p-1.5">
             <span className="sr-only">Pizzarella</span>
             <img className="h-12 w-auto" src={logo} alt="logo" />

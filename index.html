@@ -18,5 +18,15 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script>
+      // Pobierz aktualny rok
+      const currentYear = new Date().getFullYear;
+
+      // Znajdź element w stopce, do którego chcesz dodać rok
+      const yearElement = document.querySelector("footer .year");
+
+      // Dodaj aktualny rok do tekstu w stopce
+      yearElement.textContent += ` ${currentYear}`;
+    </script>
   </body>
 </html>

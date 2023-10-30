@@ -8,16 +8,16 @@ function AppLayout() {
 
   const isLoading = navigation.state === "loading";
   return (
-    <div className="relative grid h-screen grid-rows-[auto_1fr_auto] bg-bg100">
+    <div className="relative grid h-screen grid-rows-[auto_1fr_auto]  bg-bg100 ">
       {isLoading && <Loader />}
-      <nav className="mx-auto max-w-7xl">
+      <nav>
         <Header />
       </nav>
 
-      <main className="mx-auto max-w-7xl bg">
+      <main>
         <Outlet />
       </main>
-      <footer className="mx-auto max-w-7xl">
+      <footer>
         <Footer />
       </footer>
     </div>
