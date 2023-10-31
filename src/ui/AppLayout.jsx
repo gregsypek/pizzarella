@@ -10,7 +10,7 @@ function AppLayout() {
   return (
     <div className="relative grid h-screen grid-rows-[auto_1fr_auto]  bg-bg100 ">
       {isLoading && <Loader />}
-      <nav>
+      <nav c>
         <Header />
       </nav>
 
