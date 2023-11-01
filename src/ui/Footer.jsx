@@ -7,7 +7,7 @@ function Footer() {
   return (
     <section
       id="footer"
-      className=" isolate mx-auto mt-56 w-full max-w-[1440px] overflow-hidden p-2  only-of-type:mb-36 2xl:overflow-visible "
+      className=" isolate mx-auto mt-56 w-full max-w-[1440px] overflow-hidden bg-bg100  p-2 only-of-type:mb-20 2xl:overflow-visible "
     >
       <div className="relative flex items-center justify-between   ">
         <div className="absolute -left-10 -right-10 -z-50 rounded-md  bg-accent100 p-3" />
