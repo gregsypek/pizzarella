@@ -4,13 +4,14 @@ import Button from "../../ui/Button";
 import card1 from "../../images/card1_bg.png";
 import bg from "../../images/order_bg.png";
 import Card from "../../ui/Card";
+import HeaderTitle from "../../ui/HeaderTitle";
 
-function Order({ navBgColor }) {
+function Order({ bgColor }) {
   return (
     <>
       <div
         className={` ${
-          navBgColor ? navBgColor : ""
+          bgColor ? bgColor : ""
         } absolute left-0 right-0 top-0 h-[80px] w-screen `}
       />
       <main className="container mx-auto  mt-24 max-h-screen flex-col bg-bg100   p-6  px-6">
@@ -19,12 +20,11 @@ function Order({ navBgColor }) {
         </div>
         <div className="lg:items-left relative flex flex-col items-start justify-start   gap-10  lg:flex-row lg:items-end ">
           <div className=" w-full px-6  lg:w-2/3">
-            <div className=" pt-24  text-left">
-              <h2 className="text-3xl font-semibold tracking-tight  text-black  sm:text-4xl ">
-                Get in touch
-              </h2>
-              <p className="text-xl leading-8 text-gray-600">To order pizza</p>
-            </div>
+            <HeaderTitle
+              h1={"Get in touch"}
+              p={"To order pizza"}
+              padding="24"
+            />
 
             <form action="#" method="POST" className="mt-6 max-w-[700px] ">
               <div className="container gap-x-8 gap-y-6 md:grid-cols-2">
