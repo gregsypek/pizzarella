@@ -48,7 +48,9 @@ function Header() {
           <Link to="#" className="mx-4 text-sm font-semibold leading-6">
             Log in <span aria-hidden="true">&rarr;</span>
           </Link>
-          <Button type="empty">Order</Button>
+          <Button type="empty" to="/cart">
+            Cart
+          </Button>
         </div>
       </nav>
       <Dialog

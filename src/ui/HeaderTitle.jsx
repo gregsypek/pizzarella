@@ -4,7 +4,7 @@ function HeaderTitle({ h1, p, padding }) {
       <h2 className="text-3xl font-semibold capitalize tracking-tight text-black  sm:text-4xl ">
         {h1}
       </h2>
-      <p className="text-xl leading-8 text-gray-600">{p}</p>
+      <p className="text-xl leading-8 text-gray-600 ">{p}</p>
     </div>
   );
 }

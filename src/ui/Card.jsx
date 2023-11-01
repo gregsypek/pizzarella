@@ -1,10 +1,10 @@
-function Card({ img }) {
+function Card({ img, title, subtitle }) {
   return (
     <div className="border-bg300">
       <div className="h-82 w-72 rounded-2xl border-2  p-8">
         <div className="flex flex-col justify-between gap-3">
           <p className=" text-center text-sm font-bold capitalize text-accent200 ">
-            Crafted Recipe
+            {title}
           </p>
 
           <div
@@ -15,7 +15,7 @@ function Card({ img }) {
             }}
           />
           <p className=" text-center text-sm font-normal capitalize text-text200 ">
-            20 years of craftmenship
+            {subtitle}
           </p>
           <img
             src={img}

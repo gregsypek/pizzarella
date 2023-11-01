@@ -123,7 +123,11 @@ function Order({ bgColor }) {
           </div>
 
           <div className="mx-6 hidden h-full w-1/3 justify-center lg:flex">
-            <Card img={card1} />
+            <Card
+              img={card1}
+              title="Crafted Recipe"
+              subtitle="20 years of craftmenship"
+            />
           </div>
           <div className="absolute -bottom-28 -right-14   lg:hidden ">
             <img src={bg} alt="pizzarella logo" />
