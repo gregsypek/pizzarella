@@ -29,7 +29,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/order/:orderId",
-        element: <Order />,
+        element: <Order navBgColor={"bg-bg200"} />,
       },
     ],
   },
