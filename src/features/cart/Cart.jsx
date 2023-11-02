@@ -39,9 +39,11 @@ function Cart({ bgColor }) {
         className={` ${bgColor ? bgColor : ""} absolute bottom-0 left-0 
 				  h-[100vh] w-[40px]  `}
       />
-      <div className="mt-24 w-full   bg-bg200 p-3 ">
-        <div className=" container mx-auto flex  flex-col-reverse items-stretch justify-between pl-12 pr-6 md:flex-row md:items-center ">
-          <HeaderTitle h1={"Your order, Dude"} p={""} />
+      <div className="mt-24 w-full  p-3 md:bg-bg200 ">
+        <div className=" container mx-auto flex  flex-col-reverse items-stretch justify-between  pl-12 pr-6 md:flex-row   md:items-center">
+          <div className="w-full bg-bg200 p-2 md:bg-transparent">
+            <HeaderTitle h1={"Your order, Dude"} p={""} />
+          </div>
           <div className="mb-4 ms-auto md:mb-0 ">
             <SearchOrder />
           </div>

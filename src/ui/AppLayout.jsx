@@ -1,12 +1,26 @@
-import { Outlet, useNavigation } from "react-router-dom";
+import { Outlet, useLocation, useNavigation } from "react-router-dom";
 import Footer from "./Footer";
 import Header from "./Header";
 import Loader from "./Loader";
 
 function AppLayout() {
   const navigation = useNavigation();
+  const location = useLocation();
 
   const isLoading = navigation.state === "loading";
+
+  const currentPage = location.pathname;
+  console.log(
+    "🚀 ~ file: AppLayout.jsx:13 ~ AppLayout ~ currentPage:",
+    currentPage,
+  );
+  let footerType;
+  if (currentPage === "/" || currentPage === "/order/new") {
+    console.log("yes");
+    footerType = "bg-transparent";
+  } else {
+    footerType = "bg-bg200";
+  }
   return (
     <div className="relative grid h-screen grid-rows-[auto_1fr_auto]  bg-bg100 ">
       {isLoading && <Loader />}
@@ -15,9 +29,7 @@ function AppLayout() {
 
       <Outlet />
 
-      <footer>
-        <Footer />
-      </footer>
+      <Footer bgColor={footerType} />
     </div>
   );
 }

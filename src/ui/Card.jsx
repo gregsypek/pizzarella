@@ -1,7 +1,7 @@
 function Card({ img, title, subtitle }) {
   return (
     <div className="border-bg300">
-      <div className="h-82 w-72 rounded-2xl border-2  p-8">
+      <div className="h-82 w-72 rounded-2xl border-2 bg-bg100  p-8">
         <div className="flex flex-col justify-between gap-3">
           <p className=" text-center text-sm font-bold capitalize text-accent200 ">
             {title}

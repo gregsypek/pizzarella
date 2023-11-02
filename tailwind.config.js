@@ -27,6 +27,7 @@ export default {
         myCustom: "1192px",
       },
     },
+
+    plugins: ["@tailwindcss/forms"],
   },
-  plugins: ["@tailwindcss/forms"],
 };
