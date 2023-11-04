@@ -18,7 +18,7 @@ function Order({ bgColor }) {
         <div className="flex justify-end">
           <SearchOrder />
         </div>
-        <div className="lg:items-left relative flex flex-col items-start justify-start   gap-10  lg:flex-row lg:items-end ">
+        <div className="lg:items-left relative mb-16 flex flex-col items-start   justify-start gap-10  lg:flex-row lg:items-end ">
           <div className=" w-full px-6  lg:w-2/3">
             <HeaderTitle
               h1={"Get in touch"}

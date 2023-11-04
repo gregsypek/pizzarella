@@ -1,5 +1,5 @@
 import SearchOrder from "./SearchOrder";
-import card2 from "../../images/card1_bg.png";
+import card3 from "../../images/card3_bg.png";
 import bg from "../../images/order_bg.png";
 import Card from "../../ui/Card";
 import HeaderTitle from "../../ui/HeaderTitle";
@@ -81,9 +81,9 @@ function CreateOrder({ bgColor }) {
 
           <div className="relative z-50 mx-6 hidden h-full w-1/3 justify-center lg:flex">
             <Card
-              img={card2}
-              title="Thanks for ordering"
-              subtitle="Enjoy our pizza"
+              img={card3}
+              title="30 Recipies"
+              subtitle="Find a perfect one"
             />
           </div>
           <div className="absolute -right-14 bottom-6   lg:hidden ">

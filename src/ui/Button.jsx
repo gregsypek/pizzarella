@@ -4,6 +4,7 @@ function Button({ disabled, children, to, type }) {
   const base =
     "inline-block rounded-full font-semibold tracking-wide transition-colors duration-300 focus:outline-none focus:ring  focus:ring-offset-1 disabled:cursor-not-allowed border-2 ";
   const normal = base + "px-4 py-2.5 md:px-8  ";
+  const small = base + " text-xs sm:text-sm px-2 md:px-3 py-2 md:px-6 text-sm ";
   const styles = {
     red:
       normal +
@@ -17,6 +18,12 @@ function Button({ disabled, children, to, type }) {
     gray:
       normal +
       "border-text100 bg-text100  text-white hover:bg-black focus:ring-text100 focus:ring ",
+    yellow:
+      small +
+      "border-text200 bg-accent100 border-2 text-black texthover:bg-primary200 focus:ring-primary200 flex-nowrap focus:ring ",
+    smallGray:
+      small +
+      "border-text200 bg-bg200 border-2 text-black texthover:bg-primary200 focus:ring-primary200 flex-nowrap focus:ring ",
   };
 
   if (to) {

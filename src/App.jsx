@@ -16,7 +16,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/menu",
-        element: <Menu />,
+        element: <Menu bgColor={"bg-bg200"} />,
       },
       {
         path: "/cart",
