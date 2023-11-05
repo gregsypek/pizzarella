@@ -18,7 +18,7 @@ function Button({ disabled, children, to, type }) {
     gray:
       normal +
       "border-text100 bg-text100  text-white hover:bg-black focus:ring-text100 focus:ring ",
-    yellow:
+    smallYellow:
       small +
       "border-text200 bg-accent100 border-2 text-black texthover:bg-primary200 focus:ring-primary200 flex-nowrap focus:ring ",
     smallGray:

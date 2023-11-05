@@ -7,7 +7,7 @@ function Hero({ bgColor }) {
       <div
         className={` ${
           bgColor ? bgColor : ""
-        } absolute left-2/3 right-0 top-0 z-10 h-2/3 w-1/3 rounded-xl 
+        } max-h absolute left-2/3 right-0 top-0 z-10 h-2/3 max-h-[700px] w-1/3 rounded-xl 
          `}
       />
       <section
