@@ -3,16 +3,16 @@ import Button from "./Button";
 
 function FeatCard({ img, title, subtitle, buttonText, buttonTo }) {
   return (
-    <div className="border-bg100">
-      <div className="min-h-[513px] min-w-[366px] rounded-2xl border-2 bg-transparent  p-8">
+    <div className="w-[300px] border-bg100 sm:w-full">
+      <div className="  rounded-2xl border-2 bg-transparent p-2 sm:p-8">
         <div className="flex flex-col justify-between gap-8">
           <div className="relative">
             <img
               src={img}
               alt="The chef is preparing a pizza"
-              className="h-full w-full "
+              className="h-[250px] w-auto sm:h-full sm:w-full "
             />
-            <div className="absolute bottom-12 right-0 ">
+            <div className="absolute bottom-12 right-4 sm:right-0 ">
               <img src={plus} alt="plus" />
             </div>
           </div>

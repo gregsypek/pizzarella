@@ -24,7 +24,7 @@ export default {
         screen: "100dvh",
       },
       screens: {
-        myCustom: "1192px",
+        // myCustom: "1192px",
       },
     },
 

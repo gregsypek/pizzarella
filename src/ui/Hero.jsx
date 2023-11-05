@@ -15,11 +15,11 @@ function Hero({ bgColor }) {
         className="container mx-auto flex h-auto  flex-col items-center gap-10  p-6 px-7  pb-24  pt-32  sm:pt-48   lg:flex-row lg:px-8 lg:pt-52 "
       >
         <div
-          className=" flex
+          className=" relative flex justify-start
       "
         >
-          <div className=" min-w-[190px]  text-left sm:min-w-[220px] md:min-w-[380px]">
-            <h1 className="text-5xl font-bold tracking-tight text-black sm:text-7xl ">
+          <div className=" w-1/2">
+            <h1 className="relative z-10 text-5xl font-bold tracking-tight text-black sm:text-7xl ">
               Delicious Pizza
             </h1>
             <p className="mt-5 text-2xl font-bold capitalize leading-8 text-text200 md:text-4xl md:font-normal">
@@ -35,12 +35,13 @@ function Hero({ bgColor }) {
               <Button type="red"> Order now</Button>
             </div>
           </div>
-
-          <img
-            className=" relative z-50 ms-10 mt-28 h-full w-full flex-1 object-cover md:-mt-8 lg:-mt-14 "
-            src={hero}
-            alt="pizza"
-          />
+          <div className="absolute -right-16 top-[30%] z-10 w-2/3 sm:-right-20 sm:top-[20%] lg:-top-10 xl:static ">
+            <img
+              className=" h-full max-h-[600px] w-auto object-cover xl:ml-auto"
+              src={hero}
+              alt="pizza"
+            />
+          </div>
         </div>
       </section>
     </>

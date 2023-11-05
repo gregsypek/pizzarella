@@ -8,7 +8,7 @@ function Cta({ bgColor }) {
       <div
         className={` ${
           bgColor ? bgColor : ""
-        } absolute  left-0 right-0 -z-10 h-[500px] rounded-l-xl lg:left-1/2   `}
+        } absolute  left-0 right-0 -z-10 h-full rounded-l-xl lg:left-1/2   `}
       />
       <section
         id="cta"
@@ -17,7 +17,7 @@ function Cta({ bgColor }) {
           backgroundImage: `url(${pizzaBg})`,
         }}
       >
-        <div className="  h-full w-full rounded-xl  p-10 text-left ">
+        <div className="  h-full w-[300px] rounded-xl p-10  text-left sm:w-full ">
           <HeaderTitle
             h1="Delicious Pizza"
             p="Explore our menu and satisfy your pizza cravings with our fresh

@@ -27,11 +27,11 @@ const router = createBrowserRouter([
         path: "/order",
         element: <Order bgColor={"bg-bg200"} />,
       },
-      {
-        //TODO: delete after test
-        path: "/test/:orderId",
-        element: <CreateOrder bgColor={"bg-bg200"} />,
-      },
+      // {
+      //   //TODO: delete after test
+      //   path: "/test/:orderId",
+      //   element: <CreateOrder bgColor={"bg-bg200"} />,
+      // },
       {
         path: "/order/:orderId",
         element: <CreateOrder bgColor={"bg-bg200"} />,

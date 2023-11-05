@@ -26,7 +26,7 @@ function Order({ bgColor }) {
               padding="24"
             />
 
-            <form action="#" method="POST" className="mt-6 max-w-[700px] ">
+            <form action="#" method="POST" className="mt-6  ">
               <div className="container gap-x-8 gap-y-6 md:grid-cols-2">
                 <div className="grid h-full grid-cols-1 md:grid-cols-[125px_1fr] md:place-items-center md:gap-5">
                   <label

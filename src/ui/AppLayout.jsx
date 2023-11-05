@@ -22,13 +22,11 @@ function AppLayout() {
     footerType = "bg-bg200";
   }
   return (
-    <div className="relative grid h-screen grid-rows-[auto_1fr_auto]  bg-bg100 ">
+    <div className="relative grid h-screen grid-rows-[auto,1fr,auto] bg-bg100 ">
       {isLoading && <Loader />}
 
       <Header />
-
       <Outlet />
-
       <Footer bgColor={footerType} />
     </div>
   );

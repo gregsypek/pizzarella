@@ -5,18 +5,18 @@ import { navigation } from "../utils/navigation";
 function Footer({ bgColor }) {
   const currentYear = new Date().getFullYear();
   return (
-    <div className={` ${bgColor ? bgColor : ""}  w-screen px-6 py-6 `}>
+    <div className={` ${bgColor ? bgColor : ""}  mt-12 w-screen px-6 `}>
       <section
         id="footer"
-        className=" container mx-auto overflow-hidden p-2   "
+        className=" container mx-auto overflow-hidden  p-2  "
       >
-        <div className="relative flex items-center justify-between   ">
+        <div className="relative  flex  flex-wrap items-center justify-between gap-6  ">
           {/* <div className="absolute -left-10 -right-10 -z-50 rounded-md  bg-accent100 p-3" /> */}
           <Link to="/" className="-m-1.5 flex items-center  p-1.5">
             <span className="sr-only">Pizzarella</span>
-            <img className="h-16 w-auto" src={logo} alt="logo" />
+            <img className="h-8  w-auto sm:h-16" src={logo} alt="logo" />
           </Link>
-          <ul className="flex justify-between gap-5">
+          <ul className=" flex justify-between gap-3 sm:gap-5">
             {navigation.map((item) => (
               <Link
                 key={item.name}
@@ -27,7 +27,7 @@ function Footer({ bgColor }) {
               </Link>
             ))}
           </ul>
-          <ul className="flex gap-5">
+          <ul className="ml-auto flex gap-5 sm:ml-0">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="1.5em"
@@ -59,16 +59,16 @@ function Footer({ bgColor }) {
           </ul>
         </div>
         <hr className="border-1 my-12 border-bg300" />
-        <div className="flex flex-wrap justify-around ">
-          <p className="order-3 flex w-full flex-1 justify-center gap-3 sm:order-1 sm:flex">
+        <div className="flex  flex-wrap justify-center gap-3 text-sm md:gap-12 md:text-base ">
+          <p className="order-3 flex justify-center gap-3  sm:order-1 sm:flex">
             <span className="year">{currentYear}</span>
             <span> &copy;gregsypek.</span>
             <span>All rights reserved.</span>
           </p>
-          <ul className="order-1 flex gap-5">
-            <li>Privacy Policy</li>
-            <li>Terms of Service</li>
-            <li>Cookies Settings</li>
+          <ul className="order-1 flex justify-evenly gap-3  sm:order-1 ">
+            <li className="text-center">Privacy Policy</li>
+            <li className="text-center">Terms of Service</li>
+            <li className="text-center">Cookies Settings</li>
           </ul>
         </div>
       </section>

@@ -12,19 +12,21 @@ function Features({ bgColor }) {
       <div
         className={` ${
           bgColor ? bgColor : ""
-        } absolute left-0 right-1/3 top-0 -z-10 h-[110px] rounded-r-lg `}
+        } absolute left-0 right-1/3 top-0 z-10 h-[110px] rounded-r-lg xl:right-2/3 `}
       />
       <section
         id="features"
-        className=" container mx-auto flex h-fit flex-col overflow-hidden p-6  px-7  "
+        className=" container mx-auto flex  flex-col  p-6  px-7  "
       >
-        <HeaderTitle h1="Discover" p="Our special offers" />
+        <div className="relative z-20">
+          <HeaderTitle h1="Discover" p="Our special offers" />
+        </div>
         <div
-          className=" flex flex-wrap
-       justify-around gap-16 py-24 sm:pt-28 md:gap-10 lg:px-12 lg:pb-36  "
+          className=" flex flex-wrap justify-center
+       gap-16 py-24 sm:justify-around sm:pt-28 md:gap-10 lg:px-12  "
         >
           {/* pizza1 */}
-          <div className="  flex w-[30%] min-w-[350px] flex-col ">
+          <div className=" flex  min-w-[260px] flex-col items-center  sm:w-[30%] ">
             <FeatCard
               img={pizza1}
               title="Join Our Loyalty Program"
@@ -34,7 +36,7 @@ function Features({ bgColor }) {
             />
           </div>
           {/* pizza2 */}
-          <div className="  flex w-[30%] min-w-[350px] flex-col md:mt-[5rem]">
+          <div className=" flex  min-w-[260px] flex-col  items-center sm:w-[30%]  2xl:mt-[5rem]">
             <FeatCard
               img={pizza2}
               title="Convenient Online Ordering"
@@ -44,7 +46,7 @@ function Features({ bgColor }) {
             />
           </div>
           {/* pizza3 */}
-          <div className="  flex w-[30%] min-w-[350px] flex-col  myCustom:mt-[11rem]">
+          <div className=" flex  min-w-[260px] flex-col  items-center sm:w-[30%] 2xl:mt-[10rem]">
             <FeatCard
               img={pizza3}
               title="Delicious Pizza Selection"

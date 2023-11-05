@@ -1,6 +1,6 @@
 export const navigation = [
   { name: "About Us", to: "/#feature" },
   { name: "Menu", to: "/menu" },
-  { name: "Order", to: "/order" },
-  { name: "Test", to: "/order/new" },
+  { name: "New Order", to: "/order" },
+  { name: "Order Status", to: "/order/new" },
 ];
