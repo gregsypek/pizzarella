@@ -117,7 +117,9 @@ function Order({ bgColor }) {
                 </div>
               </div>
               <div className="mt-12">
-                <Button type="orange">Order now</Button>
+                <Button to="order" type="orange">
+                  Order now
+                </Button>
               </div>
             </form>
           </div>

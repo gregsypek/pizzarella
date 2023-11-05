@@ -1,6 +1,7 @@
 import pizza1 from "../images/feat_pizza1.png";
 import pizza2 from "../images/feat_pizza2.png";
 import pizza3 from "../images/feat_pizza3.png";
+import leaves from "../images/leaves.svg";
 
 import FeatCard from "./FeatCard";
 
@@ -13,6 +14,11 @@ function Features({ bgColor }) {
         className={` ${
           bgColor ? bgColor : ""
         } absolute left-0 right-1/3 top-0 z-10 h-[110px] rounded-r-lg xl:right-2/3 `}
+      />
+      <img
+        src={leaves}
+        alt="leaves"
+        className="absolute right-20 top-10 hidden xl:block"
       />
       <section
         id="features"
@@ -32,7 +38,7 @@ function Features({ bgColor }) {
               title="Join Our Loyalty Program"
               subtitle="Enjoy exclusive benefits and rewards when you become a member"
               buttonText="Learn more"
-              buttonTo="menu" //TODO; CREATE LOGIN PAGE
+              buttonTo="register"
             />
           </div>
           {/* pizza2 */}
@@ -42,7 +48,7 @@ function Features({ bgColor }) {
               title="Convenient Online Ordering"
               subtitle="Order your favorite pizza from our great application or website page"
               buttonText="Order Now"
-              buttonTo="cart"
+              buttonTo="order"
             />
           </div>
           {/* pizza3 */}

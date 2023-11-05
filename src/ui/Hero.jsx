@@ -32,7 +32,10 @@ function Hero({ bgColor }) {
               ingredients and topped with love
             </p>
             <div className="mt-14 ">
-              <Button type="red"> Order now</Button>
+              <Button to="order" type="red">
+                {" "}
+                Order now
+              </Button>
             </div>
           </div>
           <div className="absolute -right-16 top-[30%] z-10 w-2/3 sm:-right-20 sm:top-[20%] lg:-top-10 xl:static ">

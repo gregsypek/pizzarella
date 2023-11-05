@@ -23,7 +23,7 @@ function FeatCard({ img, title, subtitle, buttonText, buttonTo }) {
             className="h-0.5 w-full"
             style={{
               background:
-                "linear-gradient(90deg, rgba(255, 87, 34, 0.00) 0%, #FF5722 51.62%, rgba(255, 87, 34, 0.00) 100%)",
+                "linear-gradient(90deg, rgba(255, 87, 34, 0.00) 0%, #979797 51.62%, rgba(255, 87, 34, 0.00) 100%)",
             }}
           />
           <p className="  text-center text-sm font-normal capitalize text-text200 ">

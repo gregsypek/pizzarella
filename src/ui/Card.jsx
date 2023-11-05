@@ -14,7 +14,7 @@ function Card({ img, title, subtitle }) {
                 "linear-gradient(90deg, rgba(255, 87, 34, 0.00) 0%, #FF5722 51.62%, rgba(255, 87, 34, 0.00) 100%)",
             }}
           />
-          <p className=" text-center text-sm font-normal capitalize text-text200 ">
+          <p className=" text-center text-sm font-normal  text-text200 ">
             {subtitle}
           </p>
           <img

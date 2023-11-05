@@ -5,6 +5,7 @@ import Cart from "./features/cart/Cart";
 import CreateOrder from "./features/order/CreateOrder";
 import Order from "./features/order/Order";
 import AppLayout from "./ui/AppLayout";
+import CreateUser from "./features/user/CreateUser";
 
 const router = createBrowserRouter([
   {
@@ -27,11 +28,10 @@ const router = createBrowserRouter([
         path: "/order",
         element: <Order bgColor={"bg-bg200"} />,
       },
-      // {
-      //   //TODO: delete after test
-      //   path: "/test/:orderId",
-      //   element: <CreateOrder bgColor={"bg-bg200"} />,
-      // },
+      {
+        path: "/register",
+        element: <CreateUser bgColor={"bg-bg200"} />,
+      },
       {
         path: "/order/:orderId",
         element: <CreateOrder bgColor={"bg-bg200"} />,

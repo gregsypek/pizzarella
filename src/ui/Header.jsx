@@ -38,14 +38,17 @@ function Header() {
             <Link
               key={item.name}
               to={item.to}
-              className="text-sm font-semibold leading-6"
+              className="text-sm font-semibold leading-6 hover:text-accent200"
             >
               {item.name}
             </Link>
           ))}
         </div>
         <div className="hidden items-center lg:flex lg:flex-1 lg:justify-end">
-          <Link to="#" className="mx-4 text-sm font-semibold leading-6">
+          <Link
+            to="/register"
+            className="mx-4 text-sm font-semibold leading-6 hover:text-accent200"
+          >
             Log in <span aria-hidden="true">&rarr;</span>
           </Link>
           <Button type="empty" to="/cart">
@@ -92,7 +95,7 @@ function Header() {
               </div>
               <div className="py-6">
                 <Link
-                  to="/#"
+                  to="/register"
                   className="text-text-200 -mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 hover:bg-bg200"
                 >
                   Log in

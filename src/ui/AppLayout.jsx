@@ -16,7 +16,6 @@ function AppLayout() {
   );
   let footerType;
   if (currentPage === "/" || currentPage === "/order/new") {
-    console.log("yes");
     footerType = "bg-transparent";
   } else {
     footerType = "bg-bg200";

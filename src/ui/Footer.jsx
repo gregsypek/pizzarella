@@ -21,7 +21,7 @@ function Footer({ bgColor }) {
               <Link
                 key={item.name}
                 to={item.to}
-                className="text-sm font-semibold leading-6"
+                className="text-sm font-semibold leading-6 hover:text-accent200"
               >
                 {item.name}
               </Link>
