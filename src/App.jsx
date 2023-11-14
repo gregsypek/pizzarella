@@ -1,5 +1,6 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "./ui/Home";
+import Error from "./ui/Error";
 import Menu, { loader as menuLoader } from "./features/menu/Menu";
 import Cart from "./features/cart/Cart";
 import CreateOrder from "./features/order/CreateOrder";
@@ -10,6 +11,7 @@ import CreateUser from "./features/user/CreateUser";
 const router = createBrowserRouter([
   {
     element: <AppLayout />,
+    errorElement: <Error />,
     children: [
       {
         path: "/",
@@ -19,6 +21,7 @@ const router = createBrowserRouter([
         path: "/menu",
         element: <Menu bgColor={"bg-bg200"} />,
         loader: menuLoader,
+        errorElement: <Error />,
       },
       {
         path: "/cart",
@@ -26,8 +29,8 @@ const router = createBrowserRouter([
       },
       {
         // path: "/order/new",
-        path: "/order",
-        element: <Order bgColor={"bg-bg200"} />,
+        path: "/order/new",
+        element: <CreateOrder bgColor={"bg-bg200"} />,
       },
       {
         path: "/register",
@@ -35,7 +38,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/order/:orderId",
-        element: <CreateOrder bgColor={"bg-bg200"} />,
+        element: <Order bgColor={"bg-bg200"} />,
       },
     ],
   },

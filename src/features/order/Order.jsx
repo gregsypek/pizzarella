@@ -1,141 +1,100 @@
 import SearchOrder from "./SearchOrder";
-import { Link } from "react-router-dom";
-import Button from "../../ui/Button";
-import card1 from "../../images/card1_bg.png";
+import card3 from "../../images/card3_bg.png";
 import bg from "../../images/order_bg.png";
 import Card from "../../ui/Card";
 import HeaderTitle from "../../ui/HeaderTitle";
-
+const fakeCart = [
+  {
+    pizzaId: 1,
+    name: "Mediterranean",
+    quantity: 2,
+    unitPrice: 12,
+    totalPrice: 30,
+  },
+  {
+    pizzaId: 2,
+    name: "Vegetale",
+    quantity: 1,
+    unitPrice: 16,
+    totalPrice: 13,
+  },
+  {
+    pizzaId: 3,
+    name: "Spinach and Mushroom",
+    quantity: 1,
+    unitPrice: 18,
+    totalPrice: 14,
+  },
+];
 function Order({ bgColor }) {
+  const cart = fakeCart;
+
   return (
     <>
-      <div
-        className={` ${
-          bgColor ? bgColor : ""
-        } absolute left-0 right-0 top-0 h-[80px] w-screen `}
-      />
-      <main className="container mx-auto  mt-24 max-h-screen flex-col bg-bg100   p-6  px-6">
-        <div className="flex justify-end">
-          <SearchOrder />
+      <div className="mt-24 w-full  p-3 md:bg-bg200 ">
+        <div className=" container mx-auto flex  flex-col-reverse items-stretch justify-between  pl-12 pr-6 md:flex-row   md:items-center">
+          <div className="w-full bg-bg200 p-2 md:bg-transparent">
+            <HeaderTitle h1={"Order #2323"} p={"Check your status"} />
+          </div>
+          <div className="mb-12 ms-auto md:mb-0 ">
+            <SearchOrder />
+          </div>
         </div>
-        <div className="lg:items-left relative mb-16 flex flex-col items-start   justify-start gap-10  lg:flex-row lg:items-end ">
-          <div className=" w-full px-6  lg:w-2/3">
-            <HeaderTitle
-              h1={"Get in touch"}
-              p={"To order pizza"}
-              padding="24"
-            />
+      </div>
+      <main className="container mx-auto my-12 flex-col   bg-bg100   pe-6 ps-12">
+        <div className="lg:items-left  flex flex-col items-start justify-start  gap-10 overflow-x-hidden  lg:flex-row lg:items-end ">
+          <div className=" self-start px-6 lg:w-2/3">
+            <div className="flex flex-wrap items-center justify-between gap-2 py-5">
+              <p className="font-base  text-text100">Only 50 minutes left</p>
+              <p className="text-sm text-text100">
+                (Estimated delivery: 02.11.2023)
+              </p>
+            </div>
+            <ul className="divide-y-2  border-b-2 border-t-2">
+              {cart.map((c) => (
+                <li className="py-3" key={c.pizzaId}>
+                  <div className="flex items-center justify-between gap-4 text-sm">
+                    <p className="capitalize">
+                      <span className="text-base font-bold">{"1"}&times;</span>
+                      {c.name}
+                    </p>
+                    <p className="font-bold">{c.totalPrice}</p>
+                  </div>
+                  <p className="text-sm capitalize italic text-text100">
+                    cheese, salami
+                  </p>
+                </li>
+              ))}
+            </ul>
+            <div className="space-y-2 py-5">
+              <p className="text-sm font-medium text-stone-600">
+                Price pizza: 13
+              </p>
 
-            <form action="#" method="POST" className="mt-6  ">
-              <div className="container gap-x-8 gap-y-6 md:grid-cols-2">
-                <div className="grid h-full grid-cols-1 md:grid-cols-[125px_1fr] md:place-items-center md:gap-5">
-                  <label
-                    htmlFor="first-name"
-                    className="mt-3 block  justify-self-start  text-lg font-normal leading-6 tracking-normal text-text100 md:my-0"
-                  >
-                    First name
-                  </label>
-                  <div className="mt-6 h-full  w-full md:mt-12 ">
-                    <input
-                      type="text"
-                      name="first-name"
-                      id="first-name"
-                      autoComplete="given-name"
-                      className="input"
-                    />
-                  </div>
-                </div>
-                <div className="grid h-full grid-cols-1 md:grid-cols-[125px_1fr] md:place-items-center md:gap-5">
-                  <label
-                    htmlFor="first-name"
-                    className="mt-3 block  justify-self-start  text-lg font-normal leading-6 tracking-normal text-text100 md:my-0"
-                  >
-                    Phone number
-                  </label>
-                  <div className="mt-3  h-full w-full md:mt-12">
-                    <input
-                      type="tel"
-                      name="phone-number"
-                      id="phone-number"
-                      autoComplete="tel"
-                      className="input"
-                    />
-                  </div>
-                </div>
-                <div className="grid h-full grid-cols-1 md:grid-cols-[125px_1fr] md:place-items-center md:gap-5">
-                  <label
-                    htmlFor="first-name"
-                    className="mt-3 block  justify-self-start  text-lg font-normal leading-6 tracking-normal text-text100 md:my-0"
-                  >
-                    Email
-                  </label>
-                  <div className="mt-3  h-full w-full md:mt-12">
-                    <input
-                      type="email"
-                      name="email"
-                      id="email"
-                      autoComplete="email"
-                      className="input"
-                    />
-                  </div>
-                </div>
+              <p className="text-sm font-medium text-stone-600">
+                Price priority: 4
+              </p>
 
-                <div className="mt-6 flex h-6 items-center md:mt-6">
-                  <input
-                    className="checkbox"
-                    type="checkbox"
-                    name="priority"
-                    id="priority"
-                    // value={withPriority}
-                    // onChange={(e) => {}}
-                  />
-                  <label
-                    htmlFor="priority"
-                    className="text-sm   font-normal leading-6 tracking-normal text-text100 md:mt-0"
-                  >
-                    Want to yo give your order priority?
-                  </label>
-                </div>
-                <div className="mt-3 flex h-6 items-center md:mt-6">
-                  <input
-                    className="checkbox"
-                    type="checkbox"
-                    name="priority"
-                    id="policy"
-                    // value={withPriority}
-                    // onChange={(e) => {}}
-                  />
-                  <label
-                    htmlFor="policy"
-                    className="text-sm   font-normal leading-6 tracking-normal text-text100 md:mt-0"
-                  >
-                    By selecting this, you agree to our{" "}
-                    <Link to="#" className="font-semibold text-primary200 ">
-                      privacy&nbsp;policy
-                    </Link>
-                  </label>
-                </div>
-              </div>
-              <div className="mt-12">
-                <Button to="order" type="orange">
-                  Order now
-                </Button>
-              </div>
-            </form>
+              <p className="font-bold">To pay on delivery: 17</p>
+            </div>
           </div>
 
-          <div className="mx-6 hidden h-full w-1/3 justify-center lg:flex">
+          <div className="relative z-50 mx-6 hidden h-full w-1/3 justify-center lg:flex">
             <Card
-              img={card1}
-              title="Crafted Recipe"
-              subtitle="20 years of craftmenship"
+              img={card3}
+              title="30 Recipies"
+              subtitle="Find a perfect one"
             />
           </div>
-          <div className="absolute -bottom-28 -right-14   lg:hidden ">
+          <div className="absolute -right-14 bottom-6   lg:hidden ">
             <img src={bg} alt="pizzarella logo" />
           </div>
         </div>
       </main>
+      <div
+        className={` ${bgColor ? bgColor : ""}  
+				  h-[150px]  w-screen`}
+      />
     </>
   );
 }

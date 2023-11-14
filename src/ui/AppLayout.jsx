@@ -5,6 +5,7 @@ import Loader from "./Loader";
 
 function AppLayout() {
   const navigation = useNavigation();
+
   const location = useLocation();
 
   const isLoading = navigation.state === "loading";
@@ -21,11 +22,13 @@ function AppLayout() {
     footerType = "bg-bg200";
   }
   return (
-    <div className="relative grid h-screen grid-rows-[auto,1fr,auto] bg-bg100 ">
+    <div className="relative flex h-screen flex-col bg-bg100">
+      {/* <div className="grid-rows-[auto,minmax(1fr, 1fr),auto] relative grid h-screen bg-bg100"> */}
       {isLoading && <Loader />}
-
       <Header />
-      <Outlet />
+      <div className="flex-1">
+        <Outlet />
+      </div>
       <Footer bgColor={footerType} />
     </div>
   );

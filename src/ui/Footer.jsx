@@ -5,7 +5,9 @@ import { navigation } from "../utils/navigation";
 function Footer({ bgColor }) {
   const currentYear = new Date().getFullYear();
   return (
-    <div className={` ${bgColor ? bgColor : ""}  mt-12 w-screen px-6 `}>
+    <div
+      className={` ${bgColor ? bgColor : ""} m-h-screen mt-12 w-screen px-6`}
+    >
       <section
         id="footer"
         className=" container mx-auto overflow-hidden  p-2  "
