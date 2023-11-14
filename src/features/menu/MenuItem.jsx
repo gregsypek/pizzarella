@@ -1,28 +1,30 @@
 import pizza1 from "../../images/menu_pizza1.png";
 import Button from "../../ui/Button";
 
-function MenuItem() {
+function MenuItem({ pizza }) {
+  const { id, name, unitPrice, ingredients, soldOut, imageUrl } = pizza;
   return (
     // <div className=" h-full  w-full  ">
     <div className=" relative rounded-xl border border-bg300 bg-opacity-50 text-text100  sm:text-sm sm:leading-6">
       <img
-        src={pizza1}
+        src={imageUrl}
         alt="small pizza"
-        className=" absolute left-2  top-2 z-50 my-0 hidden  aspect-square h-full  sm:inset-0 sm:left-3 sm:my-auto sm:block "
+        className=" absolute left-2  top-2 z-50 my-0 hidden  aspect-square h-full  rounded-full sm:inset-0 sm:left-3 sm:my-auto sm:block "
       />
+      {/* </div> */}
       <div className=" relative  h-full w-full flex-wrap text-black sm:h-[80px]">
         <div className="flex h-full flex-col justify-start gap-4 px-3 sm:flex-row md:gap-6">
-          <div className="absolute  hidden aspect-square h-[110%] w-auto  -translate-x-[5%] -translate-y-[5%] rounded-full border  sm:block  "></div>
+          <div className="absolute  hidden aspect-square h-[120%] w-auto  -translate-x-[10%] -translate-y-[10%] rounded-full border  bg-bg300 sm:block "></div>
           <div className="mr-auto flex h-full w-full  flex-col justify-around sm:w-2/3 ">
             <div className=" flex flex-row justify-between   p-3 sm:ml-[100px] sm:flex-col">
               <div>
-                <p className=" text-sm font-bold md:text-base">Margarita</p>
+                <p className=" text-sm font-bold md:text-base">{name}</p>
 
                 <p className="flex-wrap text-xs md:text-sm">
-                  Tomato, Mozarella, Basil
+                  {ingredients.join(", ")}
                 </p>
               </div>
-              <p className="text-sm font-semibold md:text-base">38 zł</p>
+              <p className="text-sm font-semibold md:text-base">{unitPrice}</p>
             </div>
           </div>
           <div className=" min-w-fit self-end  sm:w-1/3  sm:self-center ">

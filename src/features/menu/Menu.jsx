@@ -4,8 +4,12 @@ import HeaderTitle from "../../ui/HeaderTitle";
 import SearchOrder from "../order/SearchOrder";
 import MenuItem from "./MenuItem";
 import card4 from "../../images/card4_bg.png";
+import { getMenu } from "../../services/apiRestaurant";
+import { useLoaderData } from "react-router-dom";
 
 function Menu({ bgColor }) {
+  const menu = useLoaderData();
+  console.log("🚀 ~ file: Menu.jsx:12 ~ Menu ~ menu:", menu);
   return (
     <>
       <div
@@ -25,13 +29,12 @@ function Menu({ bgColor }) {
               // padding="24"
             />
             <div className="flex">
-              <div className="container mt-16 flex w-full flex-col gap-8 xl:w-2/3 ">
-                <MenuItem />
-                <MenuItem />
-                <MenuItem />
-                <MenuItem />
+              <div className="container mt-16 flex w-full flex-col gap-8 2xl:w-2/3 ">
+                {menu.map((pizza) => (
+                  <MenuItem pizza={pizza} key={pizza.id} />
+                ))}
               </div>
-              <div className="mx-6 hidden h-full flex-col flex-wrap items-end gap-12 self-center overflow-y-auto lg:w-1/3  xl:flex ">
+              <div className="mx-6 hidden h-full flex-col flex-wrap items-end gap-12 self-center overflow-y-auto lg:w-1/3  2xl:flex ">
                 <Card
                   img={card4}
                   title="Fast delivery service"
@@ -48,6 +51,11 @@ function Menu({ bgColor }) {
       </main>
     </>
   );
+}
+
+export async function loader() {
+  const menu = await getMenu();
+  return menu;
 }
 
 export default Menu;
