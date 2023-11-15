@@ -11,11 +11,11 @@ function Order({ bgColor }) {
 
   const {
     id,
-    status,
-    priority,
-    priorityPrice,
-    orderPrice,
-    estimatedDelivery,
+    // status,
+    // priority,
+    // priorityPrice,
+    // orderPrice,
+    // estimatedDelivery,
     cart,
   } = order;
   console.log("🚀 ~ file: Order.jsx:21 ~ Order ~ order:", order);
@@ -38,7 +38,7 @@ function Order({ bgColor }) {
             <div className="flex flex-wrap items-center justify-between gap-2 py-5">
               <p className="font-base  text-text100">Only 50 minutes left</p>
               <p className="text-sm text-text100">
-                (Estimated delivery: 02.11.2023)
+                {/* (Estimated delivery: 02.11.2023) */}
               </p>
             </div>
             <ul className="divide-y-2  border-b-2 border-t-2">

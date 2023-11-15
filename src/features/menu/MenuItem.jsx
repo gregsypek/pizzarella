@@ -14,7 +14,7 @@ function MenuItem({ pizza }) {
       {/* </div> */}
       <div className=" relative  h-full w-full flex-wrap text-black sm:h-[80px]">
         <div className="flex h-full flex-col justify-start gap-4 px-3 sm:flex-row md:gap-6">
-          <div className="absolute  hidden aspect-square h-[120%] w-auto  -translate-x-[10%] -translate-y-[10%] rounded-full border  bg-bg300 sm:block "></div>
+          <div className="absolute  hidden aspect-square h-[120%] w-auto  -translate-x-[10%] -translate-y-[10%] rounded-full border  bg-bg200 sm:block "></div>
           <div className="mr-auto flex h-full w-full  flex-col justify-around sm:w-2/3 ">
             <div className=" flex flex-row justify-between   p-3 sm:ml-[100px] sm:flex-col">
               <div>

@@ -1,5 +1,11 @@
 import SearchOrder from "./SearchOrder";
-import { Form, Link, redirect } from "react-router-dom";
+import {
+  Form,
+  Link,
+  redirect,
+  useActionData,
+  useNavigation,
+} from "react-router-dom";
 import Button from "../../ui/Button";
 import card1 from "../../images/card1_bg.png";
 import bg from "../../images/order_bg.png";
@@ -31,7 +37,18 @@ const fakeCart = [
   },
 ];
 
+const isValidPhone = (phoneNumber) => {
+  const phoneRegex = /^\d{9}$/;
+  return phoneRegex.test(phoneNumber);
+};
+
 function CreateOrder({ bgColor }) {
+  const navigation = useNavigation();
+  const isSumbitting = navigation.state === "submitting";
+
+  const formErrors = useActionData();
+  console.log("🚀 ~ file: CreateOrder.jsx:50 ~ CreateOrder ~ formErrors:", formErrors)
+
   const cart = fakeCart;
   return (
     <>
@@ -53,11 +70,11 @@ function CreateOrder({ bgColor }) {
             />
 
             <Form method="POST" className="mt-6 ">
-              <div className="container gap-x-8 gap-y-6 md:grid-cols-2">
+              <div className="container gap-x-8 gap-y-6 md:grid-cols-2 ">
                 <div className="grid h-full grid-cols-1 md:grid-cols-[125px_1fr] md:place-items-center md:gap-5">
                   <label
                     htmlFor="customer"
-                    className="mt-3 block  justify-self-start  text-lg font-normal leading-6 tracking-normal text-text100 md:my-0"
+                    className="mt-3 block  justify-self-start  text-lg font-normal leading-6 tracking-normal text-text00 md:my-0"
                   >
                     First name
                   </label>
@@ -68,7 +85,8 @@ function CreateOrder({ bgColor }) {
                       name="customer"
                       id="customer"
                       autoComplete="given-name"
-                      className="input"
+                      className="input "
+                      
                     />
                   </div>
                 </div>
@@ -87,8 +105,15 @@ function CreateOrder({ bgColor }) {
                       autoComplete="tel"
                       className="input"
                     />
+                     
                   </div>
+                  
                 </div>
+                {formErrors?.phone && (
+              <p className="md:ml-[150px] p-2 md:p-0 rounded-md  text-xs text-red-700">
+                {formErrors.phone}
+              </p>
+            )}
                 <div className="grid h-full grid-cols-1 md:grid-cols-[125px_1fr] md:place-items-center md:gap-5">
                   <label
                     htmlFor="address"
@@ -98,6 +123,7 @@ function CreateOrder({ bgColor }) {
                   </label>
                   <div className="mt-3  h-full w-full md:mt-12">
                     <input
+                      required
                       type="address"
                       name="address"
                       id="address"
@@ -146,63 +172,11 @@ function CreateOrder({ bgColor }) {
               <input type="hidden" name="cart" value={JSON.stringify(cart)} />
 
               <div className="mt-12">
-                <Button type="orange">Order now</Button>
+                <Button disabled={isSumbitting} type="orange">
+                  {isSumbitting ? "Placing order..." : "Order now"}
+                </Button>
               </div>
             </Form>
-            {/* <Form method="POST">
-              <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center">
-                <label className="sm:basis-40">First Name</label>
-                <input
-                  className="input grow"
-                  type="text"
-                  name="customer"
-                  required
-                />
-              </div>
-
-              <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center">
-                <label className="sm:basis-40">Phone number</label>
-                <div className="grow">
-                  <input
-                    className="input w-full"
-                    type="tel"
-                    name="phone"
-                    required
-                  />
-                </div>
-              </div>
-
-              <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center">
-                <label className="sm:basis-40">Address</label>
-                <div className="grow">
-                  <input
-                    className="input w-full"
-                    type="text"
-                    name="address"
-                    required
-                  />
-                </div>
-              </div>
-
-              <div className="mb-12 flex items-center gap-5">
-                <input
-                  className="h-6 w-6 accent-yellow-400 focus:outline-none focus:ring focus:ring-yellow-400 focus:ring-offset-2"
-                  type="checkbox"
-                  name="priority"
-                  id="priority"
-                  // value={withPriority}
-                  // onChange={(e) => setWithPriority(e.target.checked)}
-                />
-                <label htmlFor="priority" className="font-medium">
-                  Want to yo give your order priority?
-                </label>
-              </div>
-
-              <div>
-                <input type="hidden" name="cart" />
-                <Button type="primary">Order now</Button>
-              </div>
-            </Form> */}
           </div>
 
           <div className="mx-6 hidden h-full w-1/3 justify-center lg:flex">
@@ -224,15 +198,21 @@ function CreateOrder({ bgColor }) {
 export async function action({ request }) {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
-  // console.log("🚀 ~ file: CreateOrder.jsx:146 ~ action ~ data:", data);
 
   const order = {
     ...data,
     cart: JSON.parse(data.cart),
     priority: data.priority === "on",
   };
-  console.log("🚀 ~ file: CreateOrder.jsx:228 ~ action ~ order:", order);
 
+  const errors = {};
+  if (!isValidPhone(order.phone))
+    errors.phone =
+      'Please give us your correct phone number.';
+
+  if (Object.keys(errors).length > 0) return errors;
+
+  
   const newOrder = await createOrder(order);
   //can't use navigation here - only for components
   return redirect(`/order/${newOrder.id}`);
