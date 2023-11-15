@@ -1,8 +1,8 @@
-import pizza1 from "../../images/menu_pizza1.png";
+// import pizza1 from "../../images/menu_pizza1.png";
 import Button from "../../ui/Button";
 
 function MenuItem({ pizza }) {
-  const { id, name, unitPrice, ingredients, soldOut, imageUrl } = pizza;
+  const { name, unitPrice, ingredients, imageUrl } = pizza;
   return (
     // <div className=" h-full  w-full  ">
     <div className=" relative rounded-xl border border-bg300 bg-opacity-50 text-text100  sm:text-sm sm:leading-6">

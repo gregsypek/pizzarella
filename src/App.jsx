@@ -5,6 +5,8 @@ import Menu, { loader as menuLoader } from "./features/menu/Menu";
 import Cart from "./features/cart/Cart";
 import CreateOrder from "./features/order/CreateOrder";
 import Order from "./features/order/Order";
+// { loader as orderLoader }
+//   from "./features/order/Order";
 import AppLayout from "./ui/AppLayout";
 import CreateUser from "./features/user/CreateUser";
 
@@ -39,6 +41,8 @@ const router = createBrowserRouter([
       {
         path: "/order/:orderId",
         element: <Order bgColor={"bg-bg200"} />,
+        // loader: orderLoader,
+        errorElement: <Error />,
       },
     ],
   },

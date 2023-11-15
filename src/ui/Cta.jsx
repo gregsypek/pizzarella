@@ -24,7 +24,7 @@ function Cta({ bgColor }) {
             ingredients"
           />
           <div className="mt-20 flex justify-center space-x-10 md:mt-40">
-            <Button to="order" type="empty">
+            <Button to="order/new" type="empty">
               Order
             </Button>
             <Button to="menu" type="gray">

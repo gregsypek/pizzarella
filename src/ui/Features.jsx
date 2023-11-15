@@ -48,7 +48,7 @@ function Features({ bgColor }) {
               title="Convenient Online Ordering"
               subtitle="Order your favorite pizza from our great application or website page"
               buttonText="Order Now"
-              buttonTo="order"
+              buttonTo="order/new"
             />
           </div>
           {/* pizza3 */}
