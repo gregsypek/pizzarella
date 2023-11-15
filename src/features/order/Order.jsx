@@ -3,41 +3,32 @@ import card3 from "../../images/card3_bg.png";
 import bg from "../../images/order_bg.png";
 import Card from "../../ui/Card";
 import HeaderTitle from "../../ui/HeaderTitle";
-const fakeCart = [
-  {
-    pizzaId: 1,
-    name: "Mediterranean",
-    quantity: 2,
-    unitPrice: 12,
-    totalPrice: 30,
-  },
-  {
-    pizzaId: 2,
-    name: "Vegetale",
-    quantity: 1,
-    unitPrice: 16,
-    totalPrice: 13,
-  },
-  {
-    pizzaId: 3,
-    name: "Spinach and Mushroom",
-    quantity: 1,
-    unitPrice: 18,
-    totalPrice: 14,
-  },
-];
+import { getOrder } from "../../services/apiRestaurant";
+import { useLoaderData } from "react-router-dom";
+
 function Order({ bgColor }) {
-  const cart = fakeCart;
+  const order = useLoaderData();
+
+  const {
+    id,
+    status,
+    priority,
+    priorityPrice,
+    orderPrice,
+    estimatedDelivery,
+    cart,
+  } = order;
+  console.log("🚀 ~ file: Order.jsx:21 ~ Order ~ order:", order);
 
   return (
     <>
       <div className="mt-24 w-full  p-3 md:bg-bg200 ">
         <div className=" container mx-auto flex  flex-col-reverse items-stretch justify-between  pl-12 pr-6 md:flex-row   md:items-center">
           <div className="w-full bg-bg200 p-2 md:bg-transparent">
-            <HeaderTitle h1={"Order #2323"} p={"Check your status"} />
+            <HeaderTitle h1={`Order #${id}`} p={"Check your status"} />
           </div>
           <div className="mb-12 ms-auto md:mb-0 ">
-            <SearchOrder />
+            <SearchOrder placeholder="Search order e.g. #IIDSAT" />
           </div>
         </div>
       </div>
@@ -97,6 +88,11 @@ function Order({ bgColor }) {
       />
     </>
   );
+}
+
+export async function loader({ params }) {
+  const order = await getOrder(params.orderId);
+  return order;
 }
 
 export default Order;

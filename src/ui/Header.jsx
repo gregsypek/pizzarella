@@ -103,7 +103,7 @@ function Header() {
               </div>
               <div className="py-6">
                 <Link
-                  to="/order/new"
+                  to="order/new"
                   className="text-text-200 -mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 hover:bg-bg200"
                 >
                   Order
