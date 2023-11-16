@@ -7,9 +7,14 @@ import { useState } from "react";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { navigation } from "../utils/navigation";
+import Username from "../features/user/UserName";
+import { useDispatch, useSelector } from "react-redux";
+import { updateFirstName } from "../features/user/userSlice";
 
 function Header() {
+  const username = useSelector((state) => state.user.firstName);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const dispatch = useDispatch();
   return (
     <header className="container absolute inset-x-0 top-0 z-50 mx-auto overflow-x-hidden ">
       <nav
@@ -45,15 +50,30 @@ function Header() {
           ))}
         </div>
         <div className="hidden items-center lg:flex lg:flex-1 lg:justify-end">
-          <Link
-            to="/register"
-            className="mx-4 text-sm font-semibold leading-6 hover:text-accent200"
-          >
-            Log in <span aria-hidden="true">&rarr;</span>
-          </Link>
+          <div className="px-3">
+          <Username />
+
+          </div>
+       
           <Button type="empty" to="/cart">
             Cart
           </Button>
+          {username ? (
+            <Link
+              onClick={() => dispatch(updateFirstName(''))}
+              className="mx-4 text-sm font-semibold leading-6 hover:text-accent200"
+            >            
+              Log out <span aria-hidden="true">&rarr;</span>
+            </Link>
+          ) : (
+            <Link
+              to="/register"
+              className="mx-4 text-sm font-semibold leading-6 hover:text-accent200"
+            >
+              Log in <span aria-hidden="true">&rarr;</span>
+            </Link>
+          )}
+          {/* <Username /> */}
         </div>
       </nav>
       <Dialog

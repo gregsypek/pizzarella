@@ -12,6 +12,7 @@ import bg from "../../images/order_bg.png";
 import Card from "../../ui/Card";
 import HeaderTitle from "../../ui/HeaderTitle";
 import { createOrder } from "../../services/apiRestaurant";
+import { useSelector } from "react-redux";
 
 const fakeCart = [
   {
@@ -45,6 +46,7 @@ const isValidPhone = (phoneNumber) => {
 function CreateOrder({ bgColor }) {
   const navigation = useNavigation();
   const isSumbitting = navigation.state === "submitting";
+  const username = useSelector(state=>state.user.firstName);
 
   const formErrors = useActionData();
   console.log("🚀 ~ file: CreateOrder.jsx:50 ~ CreateOrder ~ formErrors:", formErrors)
@@ -74,7 +76,7 @@ function CreateOrder({ bgColor }) {
                 <div className="grid h-full grid-cols-1 md:grid-cols-[125px_1fr] md:place-items-center md:gap-5">
                   <label
                     htmlFor="customer"
-                    className="mt-3 block  justify-self-start  text-lg font-normal leading-6 tracking-normal text-text00 md:my-0"
+                    className="mt-3 block  justify-self-start  text-lg text-text100 font-normal leading-6 tracking-normal  md:my-0"
                   >
                     First name
                   </label>
@@ -85,7 +87,8 @@ function CreateOrder({ bgColor }) {
                       name="customer"
                       id="customer"
                       autoComplete="given-name"
-                      className="input "
+                      className="input capitalize"
+                  defaultValue={username ? username : ''}
                       
                     />
                   </div>

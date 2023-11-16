@@ -6,6 +6,7 @@ import Card from "../../ui/Card";
 import SearchOrder from "../order/SearchOrder";
 import LinkButton from "../../ui/Link";
 import Button from "../../ui/Button";
+import { useSelector } from "react-redux";
 
 const fakeCart = [
   {
@@ -33,6 +34,7 @@ const fakeCart = [
 
 function Cart({ bgColor }) {
   const cart = fakeCart;
+  const username = useSelector(state=>state.user.firstName)
   return (
     <>
       <div
@@ -43,7 +45,7 @@ function Cart({ bgColor }) {
         <div className="mt-24 w-full  p-3 md:bg-bg200 ">
           <div className=" container mx-auto flex  flex-col-reverse items-stretch justify-between  pl-12 pr-6 md:flex-row   md:items-center">
             <div className="w-full bg-bg200 p-2 md:bg-transparent">
-              <HeaderTitle h1={"Your order, Dude"} p={""} />
+              <HeaderTitle h1={`Your order, ${username}`} p={""} />
             </div>
             <div className="mb-4 ms-auto md:mb-0 ">
               <SearchOrder />

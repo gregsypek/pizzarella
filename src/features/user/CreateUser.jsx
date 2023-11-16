@@ -3,8 +3,29 @@ import HeaderTitle from "../../ui/HeaderTitle";
 import Card from "../../ui/Card";
 import bg from "../../images/order_bg.png";
 import card5 from "../../images/card5_bg.png";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { updateFirstName } from "./userSlice";
+import { useNavigate } from "react-router-dom";
 
 function CreateUser({ bgColor }) {
+  const username = useSelector((state) => state.user.firstName);
+  console.log(
+    "🚀 ~ file: CreateUser.jsx:13 ~ CreateUser ~ username:",
+    username,
+  );
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const dispatch = useDispatch();
+
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (!firstName) return;
+    dispatch(updateFirstName(firstName));
+
+  }
   return (
     <>
       <div
@@ -14,72 +35,79 @@ function CreateUser({ bgColor }) {
       />
       <main className="container mx-auto  mt-40 max-h-screen flex-col bg-bg100   p-6  px-6">
         <div className="lg:items-left relative mb-16 flex flex-col items-start   justify-start gap-10  lg:flex-row lg:items-end ">
-          <div className=" w-full px-6  lg:w-2/3">
+          <div className=" w-full px-6 self-start lg:w-2/3 ">
             <HeaderTitle
-              h1={"Welcome"}
-              p={"Start by telling us your name "}
+              h1={`Welcome ${username ?? ""}`}
+              p={` ${username ? 'We are happy to see you': 'Start by telling us your name' }`}
               padding="24"
             />
+            {!username ?
+              <form onSubmit={handleSubmit} className="mt-6  ">
+                <div className="container gap-x-8 gap-y-6 md:grid-cols-2">
+                  <div className="grid h-full grid-cols-1 md:grid-cols-[125px_1fr] md:place-items-center md:gap-5">
+                    <label
+                      htmlFor="firstName"
+                      className="mt-3 block  justify-self-start  text-lg font-normal leading-6 tracking-normal text-text100 md:my-0"
+                    >
+                      First name
+                    </label>
+                    <div className="mt-6 h-full  w-full md:mt-12 ">
+                      <input
+                        type="text"
+                        name="firstName"
+                        id="firstName"
+                        autoComplete="given-name"
+                        className="input"
+                        onChange={(e) => setFirstName(e.target.value)}
+                        value={firstName}
+                      />
+                    </div>
+                  </div>
 
-            <form action="#" method="POST" className="mt-6  ">
-              <div className="container gap-x-8 gap-y-6 md:grid-cols-2">
-                <div className="grid h-full grid-cols-1 md:grid-cols-[125px_1fr] md:place-items-center md:gap-5">
-                  <label
-                    htmlFor="first-name"
-                    className="mt-3 block  justify-self-start  text-lg font-normal leading-6 tracking-normal text-text100 md:my-0"
-                  >
-                    First name
-                  </label>
-                  <div className="mt-6 h-full  w-full md:mt-12 ">
-                    <input
-                      type="text"
-                      name="first-name"
-                      id="first-name"
-                      autoComplete="given-name"
-                      className="input"
-                    />
+                  <div className="grid h-full grid-cols-1 md:grid-cols-[125px_1fr] md:place-items-center md:gap-5">
+                    <label
+                      htmlFor="lastName"
+                      className="mt-3 block  justify-self-start  text-lg font-normal leading-6 tracking-normal text-text100 md:my-0"
+                    >
+                      Last name
+                    </label>
+                    <div className="mt-3  h-full w-full md:mt-12">
+                      <input
+                        type="text"
+                        name="lastName"
+                        autoComplete="given-name"
+                        id="lastName"
+                        className="input"
+                        onChange={(e) => setLastName(e.target.value)}
+                        value={lastName}
+                      />
+                    </div>
+                  </div>
+                  <div className="grid h-full grid-cols-1 md:grid-cols-[125px_1fr] md:place-items-center md:gap-5">
+                    <label
+                      htmlFor="email"
+                      className="mt-3 block  justify-self-start  text-lg font-normal leading-6 tracking-normal text-text100 md:my-0"
+                    >
+                      Email
+                    </label>
+                    <div className="mt-3  h-full w-full md:mt-12">
+                      <input
+                        type="email"
+                        name="email"
+                        id="email"
+                        autoComplete="email"
+                        className="input"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                      />
+                    </div>
                   </div>
                 </div>
-
-                <div className="grid h-full grid-cols-1 md:grid-cols-[125px_1fr] md:place-items-center md:gap-5">
-                  <label
-                    htmlFor="last-name"
-                    className="mt-3 block  justify-self-start  text-lg font-normal leading-6 tracking-normal text-text100 md:my-0"
-                  >
-                    Last name
-                  </label>
-                  <div className="mt-3  h-full w-full md:mt-12">
-                    <input
-                      type="text"
-                      name="last name"
-                      autoComplete="given-name"
-                      id="last name"
-                      className="input"
-                    />
-                  </div>
+                <div className="mt-12">
+                  <Button type="orange">Join now</Button>
                 </div>
-                <div className="grid h-full grid-cols-1 md:grid-cols-[125px_1fr] md:place-items-center md:gap-5">
-                  <label
-                    htmlFor="first-name"
-                    className="mt-3 block  justify-self-start  text-lg font-normal leading-6 tracking-normal text-text100 md:my-0"
-                  >
-                    Email
-                  </label>
-                  <div className="mt-3  h-full w-full md:mt-12">
-                    <input
-                      type="email"
-                      name="email"
-                      id="email"
-                      autoComplete="email"
-                      className="input"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="mt-12">
-                <Button type="orange">Join now</Button>
-              </div>
-            </form>
+              </form>: <h1 className="text-xl py-12 text-text200"> Check out our latest additions to the menu New flavors waiting just for you! <span className="block py-5">Enjoy a special <strong>discount</strong> on your next pizza order.</span></h1>
+            }
           </div>
 
           <div className="mx-6 hidden h-full w-1/3 justify-center lg:flex">
