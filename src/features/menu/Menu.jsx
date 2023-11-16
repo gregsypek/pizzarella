@@ -6,6 +6,7 @@ import MenuItem from "./MenuItem";
 import card4 from "../../images/card4_bg.png";
 import { getMenu } from "../../services/apiRestaurant";
 import { useLoaderData } from "react-router-dom";
+import CartOverview from "../cart/CartOverview";
 
 function Menu({ bgColor }) {
   const menu = useLoaderData();
@@ -48,6 +49,7 @@ function Menu({ bgColor }) {
             </div>
           </div>
         </div>
+        <CartOverview />
       </main>
     </>
   );
