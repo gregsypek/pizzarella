@@ -32,8 +32,8 @@ function Hero({ bgColor }) {
               ingredients and topped with love
             </p>
             <div className="mt-14 ">
-              <Button to="order" type="red">
-                {" "}
+              <Button to="order/new" type="red">
+          
                 Order now
               </Button>
             </div>

@@ -6,7 +6,7 @@ import card5 from "../../images/card5_bg.png";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateFirstName } from "./userSlice";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 function CreateUser({ bgColor }) {
   const username = useSelector((state) => state.user.firstName);
