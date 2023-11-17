@@ -6,35 +6,24 @@ import Card from "../../ui/Card";
 import SearchOrder from "../order/SearchOrder";
 import LinkButton from "../../ui/Link";
 import Button from "../../ui/Button";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { clearCart, getCart, getTotalCartQuantity } from "./cartSlice";
+import { getUsername } from "../user/userSlice";
+import { Link } from "react-router-dom";
 
-const fakeCart = [
-  {
-    pizzaId: 1,
-    name: "Mediterranean",
-    quantity: 2,
-    unitPrice: 12,
-    totalPrice: 30,
-  },
-  {
-    pizzaId: 2,
-    name: "Vegetale",
-    quantity: 1,
-    unitPrice: 16,
-    totalPrice: 13,
-  },
-  {
-    pizzaId: 3,
-    name: "Spinach and Mushroom",
-    quantity: 1,
-    unitPrice: 18,
-    totalPrice: 14,
-  },
-];
+
 
 function Cart({ bgColor }) {
-  const cart = fakeCart;
-  const username = useSelector(state=>state.user.firstName)
+  // const cart = fakeCart;
+  const username = useSelector(getUsername)
+  const cart  = useSelector(getCart)
+  const dispatch = useDispatch()
+  const totalCartQuantity = useSelector(getTotalCartQuantity);
+  console.log("🚀 ~ file: Cart.jsx:22 ~ Cart ~ totalCartQuantity:", totalCartQuantity)
+
+
+
+
   return (
     <>
       <div
@@ -62,16 +51,16 @@ function Cart({ bgColor }) {
               {/* <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --> */}
               <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 288 480 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-370.7 0 73.4-73.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-128 128z" />
             </svg>
-            <p className="text-base"> Back to menu</p>
+            <Link to="/menu" className="text-base"> Back to menu</Link>
           </LinkButton>
         </div>
-
-        <div className="container mx-auto  max-h-screen flex-col  bg-bg100   p-6 pe-6 ps-12">
+    
+      <div className="container mx-auto  max-h-screen flex-col  bg-bg100   p-6 pe-6 ps-12">
           <div className="lg:items-left relative flex flex-col items-start justify-start  gap-10   lg:flex-row lg:items-end ">
             <div className=" w-full self-start px-6 lg:w-2/3">
               {/* divide-text100 */}
               <ul className="divide-y-2  border-b-2 border-t-2">
-                {cart.map((c) => (
+               {cart.length ?  cart.map((c) => (
                   <li className="py-3" key={c.pizzaId}>
                     <div className="flex items-center justify-between gap-4 text-sm">
                       <p className="capitalize">
@@ -86,12 +75,14 @@ function Cart({ bgColor }) {
                       cheese, salami
                     </p>
                   </li>
-                ))}
+                )): <p className="py-5 text-xl">
+                Your cart is empty. Start adding some pizzas.
+              </p> }
               </ul>
-              <div className="mt-24 flex gap-12">
-                <Button type="gray">Order pizza</Button>
-                <Button type="empty">Clear cart</Button>
-              </div>
+             {cart.length > 0  && <div className="mt-24 flex gap-12">
+                <Button type="gray" >Order pizza</Button>
+                <Button type="empty" disabled={!totalCartQuantity} onClick={()=>dispatch(clearCart())}>Clear cart</Button>
+              </div>}
             </div>
 
             <div className="mx-6 hidden h-full w-1/3 justify-center lg:flex">
@@ -105,7 +96,7 @@ function Cart({ bgColor }) {
               <img src={bg} alt="pizzarella logo" />
             </div>
           </div>
-        </div>
+        </div>  
       </main>
     </>
   );

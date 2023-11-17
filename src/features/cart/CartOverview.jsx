@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { getTotalCartPrice, getTotalCartQuantity } from "./cartSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 const CartOverview = () => {
   const totalCartPrice = useSelector(getTotalCartPrice);
   const totalCartQuantity = useSelector(getTotalCartQuantity);
@@ -45,9 +46,9 @@ const CartOverview = () => {
         </span>
       </div>
       <div className="flex flex-col justify-between gap-1 sm:gap-3">
-        <p className=" text-center  text-sm font-bold capitalize text-bg100 sm:text-base ">
+        <Link className=" text-center  hover:text-accent200 text-sm font-bold capitalize text-bg100 sm:text-base " to="/cart">
           Cart
-        </p>
+        </Link>
 
         <div
           className="h-0.5 w-full"
