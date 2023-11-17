@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearCart, getCart, getTotalCartQuantity } from "./cartSlice";
 import { getUsername } from "../user/userSlice";
 import { Link } from "react-router-dom";
+import CartItem from "./CartItem";
 
 
 
@@ -61,21 +62,8 @@ function Cart({ bgColor }) {
               {/* divide-text100 */}
               <ul className="divide-y-2  border-b-2 border-t-2">
                {cart.length ?  cart.map((c) => (
-                  <li className="py-3" key={c.pizzaId}>
-                    <div className="flex items-center justify-between gap-4 text-sm">
-                      <p className="capitalize">
-                        <span className="text-base font-bold">
-                          {"1"}&times;
-                        </span>
-                        {c.name}
-                      </p>
-                      <p className="font-bold">{c.totalPrice}</p>
-                    </div>
-                    <p className="text-sm capitalize italic text-text100">
-                      cheese, salami
-                    </p>
-                  </li>
-                )): <p className="py-5 text-xl">
+               <CartItem item={c}/>
+                )): <p className="py-5 text-lg">
                 Your cart is empty. Start adding some pizzas.
               </p> }
               </ul>

@@ -1,32 +1,37 @@
 // import pizza1 from "../../images/menu_pizza1.png";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Button from "../../ui/Button";
-import { addItem } from "../cart/cartSlice";
+import { addItem, getCurrentQuantityById } from "../cart/cartSlice";
+import DeleteItem from "../cart/DeleteItem";
 
 function MenuItem({ pizza }) {
-  const {id, name, unitPrice, ingredients, imageUrl, soldOut } = pizza;
+  const { id, name, unitPrice, ingredients, imageUrl, soldOut } = pizza;
   const dispatch = useDispatch();
 
-  function handleAddToCart(){
- 
+  const currentQuantity = useSelector(getCurrentQuantityById(id));
+  const isInCart = currentQuantity > 0;
+  function handleAddToCart() {
     const newItem = {
-      pizzaId:id,
-      name:name,
-      quantity:1,
+      pizzaId: id,
+      name: name,
+      quantity: 1,
       unitPrice,
-      totalPrice:unitPrice * 1,
+      totalPrice: unitPrice * 1,
     };
-    dispatch(addItem(newItem))
+    dispatch(addItem(newItem));
   }
   return (
-
-    <div className={` relative rounded-xl border border-bg300 bg-opacity-50 text-text100 ${soldOut ? 'opacity-70 bg-bg200': ''} sm:text-sm sm:leading-6`}>
+    <div
+      className={` relative rounded-xl border border-bg300 bg-opacity-50 text-text100 ${
+        soldOut ? "bg-bg200 opacity-70" : ""
+      } sm:text-sm sm:leading-6`}
+    >
       <img
         src={imageUrl}
         alt="small pizza"
         className=" absolute left-2  top-2 z-50 my-0 hidden  aspect-square h-full  rounded-full sm:inset-0 sm:left-3 sm:my-auto sm:block "
       />
-      {/* </div> */}
+
       <div className=" relative  h-full w-full flex-wrap text-black sm:h-[80px]">
         <div className="flex h-full flex-col justify-start gap-4 px-3 sm:flex-row md:gap-6">
           <div className="absolute  hidden aspect-square h-[120%] w-auto  -translate-x-[10%] -translate-y-[10%] rounded-full border  bg-bg200 sm:block "></div>
@@ -67,14 +72,22 @@ function MenuItem({ pizza }) {
                 </svg>
               </div>
               <div className="flex justify-center">
-               {!soldOut ? <Button type="smallGray" onClick={handleAddToCart}>Add To Cart</Button> :<span className="text-text100 px-4 py-2.5 md:px-8 uppercase font-semibold tracking-wide text-sm sm:text-base">Sold out</span>  }
+                {!soldOut && !isInCart && (
+                  <Button type="smallYellow" onClick={handleAddToCart}>
+                    Add To Cart
+                  </Button>
+                )}
+                {isInCart && <DeleteItem pizzaId={id} />}
+
+                {soldOut && <span className="px-4 py-2.5 text-sm font-semibold uppercase tracking-wide text-text100 sm:text-base md:px-8">
+                  Sold out
+                </span>}
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
   );
 }
 

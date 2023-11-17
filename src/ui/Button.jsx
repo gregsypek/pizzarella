@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 
 function Button({ disabled, children, to, type, onClick }) {
   const base =
-    "inline-block rounded-full font-semibold tracking-wide transition-colors duration-300 focus:outline-none focus:ring  focus:ring-offset-1 disabled:opacity-50 disabled:cursor-not-allowed border-2 ";
-  const normal = base + "px-4 py-2.5 md:px-8  ";
+    "inline-block rounded-full font-semibold tracking-wide transition-colors duration-300 focus:outline-none focus:ring  focus:ring-offset-1 disabled:opacity-50 disabled:cursor-not-allowed  ";
+  const normal = base + "px-4 py-2.5 md:px-8 border-2 ";
   const small = base + " text-xs sm:text-sm px-2 md:px-3 py-2 md:px-6 text-sm ";
   const styles = {
     red:
@@ -20,10 +20,13 @@ function Button({ disabled, children, to, type, onClick }) {
       "border-text100 bg-text100  text-white hover:bg-black focus:ring-text100 focus:ring ",
     smallYellow:
       small +
-      "border-text200 bg-accent100 border-2 text-black texthover:bg-primary200 focus:ring-primary200 flex-nowrap focus:ring ",
+      "border-text200 bg-accent100 border-2 text-black texthover:bg-primary200 focus:ring-primary200 flex-nowrap focus:ring hover:text-text200 hover:bg-transparent " ,
     smallGray:
       small +
-      "border-text200 bg-bg200 border-2 text-black texthover:bg-primary200 focus:ring-primary200 flex-nowrap focus:ring ",
+      "border-text200 bg-bg200 border-2 text-black hover:bg-primary200 focus:ring-primary200 flex-nowrap focus:ring ",
+    smallRed:
+    small +
+    "border-text200 bg-accent100 border-2 text-accent200  hover:bg-primary200 focus:ring-primary200 flex-nowrap focus:ring hover:bg-accent100 bg-transparent " ,
   };
 
   if (to) {
