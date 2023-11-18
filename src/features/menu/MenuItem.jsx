@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import Button from "../../ui/Button";
 import { addItem, getCurrentQuantityById } from "../cart/cartSlice";
 import DeleteItem from "../cart/DeleteItem";
+import UpdateItemQuantity from "../cart/UpdateItemQuantity";
+import { formatCurrency } from "../../utils/helpers";
 
 function MenuItem({ pizza }) {
   const { id, name, unitPrice, ingredients, imageUrl, soldOut } = pizza;
@@ -22,7 +24,7 @@ function MenuItem({ pizza }) {
   }
   return (
     <div
-      className={` relative rounded-xl border border-bg300 bg-opacity-50 text-text100 ${
+      className={` p-2 relative rounded-xl border border-bg300 bg-opacity-50 text-text100 ${
         soldOut ? "bg-bg200 opacity-70" : ""
       } sm:text-sm sm:leading-6`}
     >
@@ -34,7 +36,7 @@ function MenuItem({ pizza }) {
 
       <div className=" relative  h-full w-full flex-wrap text-black sm:h-[80px]">
         <div className="flex h-full flex-col justify-start gap-4 px-3 sm:flex-row md:gap-6">
-          <div className="absolute  hidden aspect-square h-[120%] w-auto  -translate-x-[10%] -translate-y-[10%] rounded-full border  bg-bg200 sm:block "></div>
+          <div className="absolute  hidden aspect-square h-[140%] w-auto  -translate-x-[15%] -translate-y-[15%] rounded-full border  bg-bg200 sm:block "></div>
           <div className="mr-auto flex h-full w-full  flex-col justify-around sm:w-2/3 ">
             <div className=" flex flex-row justify-between   p-3 sm:ml-[100px] sm:flex-col">
               <div>
@@ -44,32 +46,16 @@ function MenuItem({ pizza }) {
                   {ingredients.join(", ")}
                 </p>
               </div>
-              <p className="text-sm font-semibold md:text-base">{unitPrice}</p>
+              <p className="text-sm font-semibold md:text-base">{formatCurrency(unitPrice)}</p>
             </div>
           </div>
           <div className=" min-w-fit self-end  sm:w-1/3  sm:self-center ">
             <div
-              className="flex  justify-end gap-3   p-2 
-             lg:gap-6"
+              className="flex justify-between gap-3 gap2  p-2 
+             lg:gap-3"
             >
               <div className="flex items-center justify-center gap-3 align-middle">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  height="2em"
-                  viewBox="0 0 512 512"
-                  className="align-middle text-blue-500"
-                >
-                  {/* <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --> */}
-                  <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM232 344V280H168c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V168c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z" />
-                </svg>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  height="2em"
-                  viewBox="0 0 512 512"
-                >
-                  {/* <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --> */}
-                  <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM184 232H328c13.3 0 24 10.7 24 24s-10.7 24-24 24H184c-13.3 0-24-10.7-24-24s10.7-24 24-24z" />
-                </svg>
+             {isInCart &&   <UpdateItemQuantity pizzaId={id} currentQuantity={currentQuantity}/>}
               </div>
               <div className="flex justify-center">
                 {!soldOut && !isInCart && (
@@ -77,9 +63,9 @@ function MenuItem({ pizza }) {
                     Add To Cart
                   </Button>
                 )}
-                {isInCart && <DeleteItem pizzaId={id} />}
+                {isInCart && <DeleteItem pizzaId={id} size="normal" />}
 
-                {soldOut && <span className="px-4 py-2.5 text-sm font-semibold uppercase tracking-wide text-text100 sm:text-base md:px-8">
+                {soldOut && <span className="px-2.5 sm:px-2.5 py-2.5 text-sm font-semibold uppercase tracking-wide text-text100 sm:text-base md:px-7">
                   Sold out
                 </span>}
               </div>

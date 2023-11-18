@@ -44,14 +44,7 @@ function Cart({ bgColor }) {
         </div>
         <div className=" container mx-auto my-12 pe-6 ps-12">
           <LinkButton type="empty" to="/">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="1em"
-              viewBox="0 0 512 512"
-            >
-              {/* <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --> */}
-              <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 288 480 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-370.7 0 73.4-73.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-128 128z" />
-            </svg>
+            &larr;
             <Link to="/menu" className="text-base"> Back to menu</Link>
           </LinkButton>
         </div>
@@ -62,7 +55,7 @@ function Cart({ bgColor }) {
               {/* divide-text100 */}
               <ul className="divide-y-2  border-b-2 border-t-2">
                {cart.length ?  cart.map((c) => (
-               <CartItem item={c}/>
+               <CartItem item={c} key={c.pizzaId}/>
                 )): <p className="py-5 text-lg">
                 Your cart is empty. Start adding some pizzas.
               </p> }
