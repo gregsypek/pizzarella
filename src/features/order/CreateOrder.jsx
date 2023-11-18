@@ -13,11 +13,11 @@ import Card from "../../ui/Card";
 import HeaderTitle from "../../ui/HeaderTitle";
 import { createOrder } from "../../services/apiRestaurant";
 import { useSelector } from "react-redux";
-import { getCart } from "../cart/cartSlice";
+import { clearCart, getCart } from "../cart/cartSlice";
 import { getUsername } from "../user/userSlice";
 import EmptyCart from "../cart/EmptyCart";
-
-
+import store from "../../store";
+import BackToMenuLink from "../../ui/BackToMenuLink";
 
 const isValidPhone = (phoneNumber) => {
   const phoneRegex = /^\d{9}$/;
@@ -30,10 +30,13 @@ function CreateOrder({ bgColor }) {
   const username = useSelector(getUsername);
 
   const formErrors = useActionData();
-  console.log("🚀 ~ file: CreateOrder.jsx:50 ~ CreateOrder ~ formErrors:", formErrors)
+  console.log(
+    "🚀 ~ file: CreateOrder.jsx:50 ~ CreateOrder ~ formErrors:",
+    formErrors,
+  );
 
   const cart = useSelector(getCart);
-  console.log("🚀 ~ file: CreateOrder.jsx:35 ~ CreateOrder ~ cart:", cart)
+  console.log("🚀 ~ file: CreateOrder.jsx:35 ~ CreateOrder ~ cart:", cart);
   return (
     <>
       <div
@@ -45,123 +48,129 @@ function CreateOrder({ bgColor }) {
         <div className="flex justify-end">
           <SearchOrder />
         </div>
-        <div className="lg:items-left mt-12  relative mb-16 flex flex-col items-start   justify-start gap-10  lg:flex-row lg:items-end ">
-          <div className=" self-start w-full px-6 lg:w-2/3">
+        <div className="lg:items-left relative  mb-16 mt-12 flex flex-col items-start   justify-start gap-10  lg:flex-row lg:items-end ">
+          <div className=" w-full self-start px-6 lg:w-2/3">
             <HeaderTitle
               h1={"Get in touch"}
               p={"To order pizza"}
               padding="24"
             />
 
-          {!cart.length ? <EmptyCart/> : <Form method="POST" className="mt-6 ">
-              <div className="container gap-x-8 gap-y-6 md:grid-cols-2 ">
-                <div className="grid h-full grid-cols-1 md:grid-cols-[125px_1fr] md:place-items-center md:gap-5">
-                  <label
-                    htmlFor="customer"
-                    className="mt-3 block  justify-self-start  text-lg text-text100 font-normal leading-6 tracking-normal  md:my-0"
-                  >
-                    First name
-                  </label>
-                  <div className="mt-6 h-full  w-full md:mt-12 ">
-                    <input
-                      required
-                      type="text"
-                      name="customer"
-                      id="customer"
-                      autoComplete="given-name"
-                      className="input capitalize"
-                  defaultValue={username ? username : ''}
-                      
-                    />
-                  </div>
-                </div>
-                <div className="grid h-full grid-cols-1 md:grid-cols-[125px_1fr] md:place-items-center md:gap-5">
-                  <label
-                    htmlFor="phone"
-                    className="mt-3 block  justify-self-start  text-lg font-normal leading-6 tracking-normal text-text100 md:my-0"
-                  >
-                    Phone number
-                  </label>
-                  <div className="mt-3  h-full w-full md:mt-12">
-                    <input
-                      type="tel"
-                      name="phone"
-                      id="phone"
-                      autoComplete="tel"
-                      className="input"
-                    />
-                     
-                  </div>
-                  
-                </div>
-                {formErrors?.phone && (
-              <p className="md:ml-[150px] p-2 md:p-0 rounded-md  text-xs text-red-700">
-                {formErrors.phone}
-              </p>
-            )}
-                <div className="grid h-full grid-cols-1 md:grid-cols-[125px_1fr] md:place-items-center md:gap-5">
-                  <label
-                    htmlFor="address"
-                    className="mt-3 block  justify-self-start  text-lg font-normal leading-6 tracking-normal text-text100 md:my-0"
-                  >
-                    Address
-                  </label>
-                  <div className="mt-3  h-full w-full md:mt-12">
-                    <input
-                      required
-                      type="address"
-                      name="address"
-                      id="address"
-                      autoComplete="email"
-                      className="input"
-                    />
-                  </div>
-                </div>
-
-                <div className="mt-6 flex h-6 items-center md:mt-6">
-                  <input
-                    className="checkbox"
-                    type="checkbox"
-                    name="priority"
-                    id="priority"
-                    // value={withPriority}
-                    // onChange={(e) => {}}
-                  />
-                  <label
-                    htmlFor="priority"
-                    className="text-sm   font-normal leading-6 tracking-normal text-text100 md:mt-0"
-                  >
-                    Want to yo give your order priority?
-                  </label>
-                </div>
-                <div className="mt-3 flex h-6 items-center md:mt-6">
-                  <input
-                    className="checkbox"
-                    type="checkbox"
-                    name="policy"
-                    id="policy"
-                    // value={withPriority}
-                    // onChange={(e) => {}}
-                  />
-                  <label
-                    htmlFor="policy"
-                    className="text-sm   font-normal leading-6 tracking-normal text-text100 md:mt-0"
-                  >
-                    By selecting this, you agree to our{" "}
-                    <Link to="#" className="font-semibold text-primary200 ">
-                      privacy&nbsp;policy
-                    </Link>
-                  </label>
-                </div>
-              </div>
-              <input type="hidden" name="cart" value={JSON.stringify(cart)} />
-
+            {!cart.length ? (
               <div className="mt-12">
-                <Button disabled={isSumbitting} type="orange">
-                  {isSumbitting ? "Placing order..." : "Order now"}
-                </Button>
+               <BackToMenuLink />
+                <div className=" mt-12 divide-y-2  border-b-2 border-t-2">
+                  <EmptyCart />
+                </div>{" "}
               </div>
-            </Form>}
+            ) : (
+              <Form method="POST" className="mt-6 ">
+                <div className="container gap-x-8 gap-y-6 md:grid-cols-2 ">
+                  <div className="grid h-full grid-cols-1 md:grid-cols-[125px_1fr] md:place-items-center md:gap-5">
+                    <label
+                      htmlFor="customer"
+                      className="mt-3 block  justify-self-start  text-lg font-normal leading-6 tracking-normal text-text100  md:my-0"
+                    >
+                      First name
+                    </label>
+                    <div className="mt-6 h-full  w-full md:mt-12 ">
+                      <input
+                        required
+                        type="text"
+                        name="customer"
+                        id="customer"
+                        autoComplete="given-name"
+                        className="input capitalize"
+                        defaultValue={username ? username : ""}
+                      />
+                    </div>
+                  </div>
+                  <div className="grid h-full grid-cols-1 md:grid-cols-[125px_1fr] md:place-items-center md:gap-5">
+                    <label
+                      htmlFor="phone"
+                      className="mt-3 block  justify-self-start  text-lg font-normal leading-6 tracking-normal text-text100 md:my-0"
+                    >
+                      Phone number
+                    </label>
+                    <div className="mt-3  h-full w-full md:mt-12">
+                      <input
+                        type="tel"
+                        name="phone"
+                        id="phone"
+                        autoComplete="tel"
+                        className="input"
+                      />
+                    </div>
+                  </div>
+                  {formErrors?.phone && (
+                    <p className="rounded-md p-2 text-xs text-red-700  md:ml-[150px] md:p-0">
+                      {formErrors.phone}
+                    </p>
+                  )}
+                  <div className="grid h-full grid-cols-1 md:grid-cols-[125px_1fr] md:place-items-center md:gap-5">
+                    <label
+                      htmlFor="address"
+                      className="mt-3 block  justify-self-start  text-lg font-normal leading-6 tracking-normal text-text100 md:my-0"
+                    >
+                      Address
+                    </label>
+                    <div className="mt-3  h-full w-full md:mt-12">
+                      <input
+                        required
+                        type="address"
+                        name="address"
+                        id="address"
+                        autoComplete="email"
+                        className="input"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="mt-6 flex h-6 items-center md:mt-6">
+                    <input
+                      className="checkbox"
+                      type="checkbox"
+                      name="priority"
+                      id="priority"
+                      // value={withPriority}
+                      // onChange={(e) => {}}
+                    />
+                    <label
+                      htmlFor="priority"
+                      className="text-sm   font-normal leading-6 tracking-normal text-text100 md:mt-0"
+                    >
+                      Want to yo give your order priority?
+                    </label>
+                  </div>
+                  <div className="mt-3 flex h-6 items-center md:mt-6">
+                    <input
+                      className="checkbox"
+                      type="checkbox"
+                      name="policy"
+                      id="policy"
+                      // value={withPriority}
+                      // onChange={(e) => {}}
+                    />
+                    <label
+                      htmlFor="policy"
+                      className="text-sm   font-normal leading-6 tracking-normal text-text100 md:mt-0"
+                    >
+                      By selecting this, you agree to our{" "}
+                      <Link to="#" className="font-semibold text-primary200 ">
+                        privacy&nbsp;policy
+                      </Link>
+                    </label>
+                  </div>
+                </div>
+                <input type="hidden" name="cart" value={JSON.stringify(cart)} />
+
+                <div className="mt-12">
+                  <Button disabled={isSumbitting} type="orange">
+                    {isSumbitting ? "Placing order..." : "Order now"}
+                  </Button>
+                </div>
+              </Form>
+            )}
           </div>
 
           <div className="mx-6 hidden h-full w-1/3 justify-center lg:flex">
@@ -192,13 +201,14 @@ export async function action({ request }) {
 
   const errors = {};
   if (!isValidPhone(order.phone))
-    errors.phone =
-      'Please give us your correct phone number.';
+    errors.phone = "Please give us your correct phone number.";
 
   if (Object.keys(errors).length > 0) return errors;
 
-  
   const newOrder = await createOrder(order);
+  //use only when needed - perform optimalization
+  store.dispatch(clearCart());
+
   //can't use navigation here - only for components
   return redirect(`/order/${newOrder.id}`);
   // return null;

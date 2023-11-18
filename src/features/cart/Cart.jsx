@@ -4,14 +4,13 @@ import bg from "../../images/order_bg.png";
 import HeaderTitle from "../../ui/HeaderTitle";
 import Card from "../../ui/Card";
 import SearchOrder from "../order/SearchOrder";
-import LinkButton from "../../ui/Link";
 import Button from "../../ui/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCart, getCart, getTotalCartQuantity } from "./cartSlice";
 import { getUsername } from "../user/userSlice";
-import { Link } from "react-router-dom";
 import CartItem from "./CartItem";
 import EmptyCart from "./EmptyCart";
+import BackToMenuLink from "../../ui/BackToMenuLink";
 
 
 
@@ -43,11 +42,8 @@ function Cart({ bgColor }) {
             </div>
           </div>
         </div>
-        <div className=" container mx-auto my-12 pe-6 ps-12">
-          <LinkButton type="empty" to="/">
-            &larr;
-            <Link to="/menu" className="text-base"> Back to menu</Link>
-          </LinkButton>
+        <div className=" container mx-auto my-12 pe-6  ps-16">
+        <BackToMenuLink/>
         </div>
     
       <div className="container mx-auto  max-h-screen flex-col  bg-bg100   p-6 pe-6 ps-12">
