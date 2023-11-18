@@ -13,30 +13,11 @@ import Card from "../../ui/Card";
 import HeaderTitle from "../../ui/HeaderTitle";
 import { createOrder } from "../../services/apiRestaurant";
 import { useSelector } from "react-redux";
+import { getCart } from "../cart/cartSlice";
+import { getUsername } from "../user/userSlice";
+import EmptyCart from "../cart/EmptyCart";
 
-const fakeCart = [
-  {
-    pizzaId: 12,
-    name: "Mediterranean",
-    quantity: 2,
-    unitPrice: 16,
-    totalPrice: 32,
-  },
-  {
-    pizzaId: 6,
-    name: "Vegetale",
-    quantity: 1,
-    unitPrice: 13,
-    totalPrice: 13,
-  },
-  {
-    pizzaId: 11,
-    name: "Spinach and Mushroom",
-    quantity: 1,
-    unitPrice: 15,
-    totalPrice: 15,
-  },
-];
+
 
 const isValidPhone = (phoneNumber) => {
   const phoneRegex = /^\d{9}$/;
@@ -46,12 +27,13 @@ const isValidPhone = (phoneNumber) => {
 function CreateOrder({ bgColor }) {
   const navigation = useNavigation();
   const isSumbitting = navigation.state === "submitting";
-  const username = useSelector(state=>state.user.firstName);
+  const username = useSelector(getUsername);
 
   const formErrors = useActionData();
   console.log("🚀 ~ file: CreateOrder.jsx:50 ~ CreateOrder ~ formErrors:", formErrors)
 
-  const cart = fakeCart;
+  const cart = useSelector(getCart);
+  console.log("🚀 ~ file: CreateOrder.jsx:35 ~ CreateOrder ~ cart:", cart)
   return (
     <>
       <div
@@ -63,15 +45,15 @@ function CreateOrder({ bgColor }) {
         <div className="flex justify-end">
           <SearchOrder />
         </div>
-        <div className="lg:items-left relative mb-16 flex flex-col items-start   justify-start gap-10  lg:flex-row lg:items-end ">
-          <div className=" w-full px-6  lg:w-2/3">
+        <div className="lg:items-left mt-12  relative mb-16 flex flex-col items-start   justify-start gap-10  lg:flex-row lg:items-end ">
+          <div className=" self-start w-full px-6 lg:w-2/3">
             <HeaderTitle
               h1={"Get in touch"}
               p={"To order pizza"}
               padding="24"
             />
 
-            <Form method="POST" className="mt-6 ">
+          {!cart.length ? <EmptyCart/> : <Form method="POST" className="mt-6 ">
               <div className="container gap-x-8 gap-y-6 md:grid-cols-2 ">
                 <div className="grid h-full grid-cols-1 md:grid-cols-[125px_1fr] md:place-items-center md:gap-5">
                   <label
@@ -179,7 +161,7 @@ function CreateOrder({ bgColor }) {
                   {isSumbitting ? "Placing order..." : "Order now"}
                 </Button>
               </div>
-            </Form>
+            </Form>}
           </div>
 
           <div className="mx-6 hidden h-full w-1/3 justify-center lg:flex">

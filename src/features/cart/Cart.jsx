@@ -11,6 +11,7 @@ import { clearCart, getCart, getTotalCartQuantity } from "./cartSlice";
 import { getUsername } from "../user/userSlice";
 import { Link } from "react-router-dom";
 import CartItem from "./CartItem";
+import EmptyCart from "./EmptyCart";
 
 
 
@@ -52,13 +53,10 @@ function Cart({ bgColor }) {
       <div className="container mx-auto  max-h-screen flex-col  bg-bg100   p-6 pe-6 ps-12">
           <div className="lg:items-left relative flex flex-col items-start justify-start  gap-10   lg:flex-row lg:items-end ">
             <div className=" w-full self-start px-6 lg:w-2/3">
-              {/* divide-text100 */}
               <ul className="divide-y-2  border-b-2 border-t-2">
                {cart.length ?  cart.map((c) => (
                <CartItem item={c} key={c.pizzaId}/>
-                )): <p className="py-5 text-lg">
-                Your cart is empty. Start adding some pizzas.
-              </p> }
+                )): <EmptyCart/> }
               </ul>
              {cart.length > 0  && <div className="mt-24 flex gap-12">
                 <Button type="gray" >Order pizza</Button>
