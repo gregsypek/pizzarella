@@ -4,10 +4,13 @@ import bg from "../../images/order_bg.png";
 import Card from "../../ui/Card";
 import HeaderTitle from "../../ui/HeaderTitle";
 import { getOrder } from "../../services/apiRestaurant";
-import { useLoaderData } from "react-router-dom";
+import { useFetcher, useLoaderData } from "react-router-dom";
 import { formatCurrency } from "../../utils/helpers";
+import { useEffect } from "react";
+import OrderItem from "./OrderItem";
 
 function Order({ bgColor }) {
+  const fetcher = useFetcher();
   const order = useLoaderData();
 
   const { id, status, priority, priorityPrice, orderPrice, cart } = order;
@@ -15,7 +18,14 @@ function Order({ bgColor }) {
     "🚀 ~ file: Order.jsx:21 ~ Order ~ order:",
     JSON.stringify(order, null, 2),
   );
+  console.log(fetcher.data);
 
+  useEffect(
+    function () {
+      if (!fetcher.data && fetcher.state === "idle") fetcher.load("/menu");
+    },
+    [fetcher],
+  );
   return (
     <>
       <div className="mt-24 w-full  p-3 md:bg-bg200 ">
@@ -48,19 +58,16 @@ function Order({ bgColor }) {
               </p>
             </div>
             <ul className="divide-y-2  border-b-2 border-t-2">
-              {cart.map((c) => (
-                <li className="py-3" key={c.pizzaId}>
-                  <div className="flex items-center justify-between gap-4 text-sm">
-                    <p className="capitalize">
-                      <span className="text-base font-bold">{"1"}&times;</span>
-                      {c.name}
-                    </p>
-                    <p className="font-bold">{c.totalPrice}</p>
-                  </div>
-                  <p className="text-sm capitalize italic text-text100">
-                    cheese, salami
-                  </p>
-                </li>
+              {cart.map((item) => (
+                <OrderItem
+                  item={item}
+                  key={item.pizzaId}
+                  isLoadingIngredients={fetcher.state === "loading"}
+                  ingredients={
+                    fetcher?.data?.find((el) => el.id === item.pizzaId)
+                      ?.ingredients ?? []
+                  }
+                />
               ))}
             </ul>
             <div className="space-y-2 py-5">

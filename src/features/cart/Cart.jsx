@@ -11,9 +11,12 @@ import { getUsername } from "../user/userSlice";
 import CartItem from "./CartItem";
 import EmptyCart from "./EmptyCart";
 import BackToMenuLink from "../../ui/BackToMenuLink";
+import { useEffect } from "react";
+import { useFetcher } from "react-router-dom";
 
 function Cart({ bgColor }) {
   // const cart = fakeCart;
+  const fetcher = useFetcher();
   const username = useSelector(getUsername);
   const cart = useSelector(getCart);
   const dispatch = useDispatch();
@@ -21,6 +24,13 @@ function Cart({ bgColor }) {
   console.log(
     "🚀 ~ file: Cart.jsx:22 ~ Cart ~ totalCartQuantity:",
     totalCartQuantity,
+  );
+
+  useEffect(
+    function () {
+      if (!fetcher.data && fetcher.state === "idle") fetcher.load("/menu");
+    },
+    [fetcher],
   );
 
   return (
@@ -49,7 +59,17 @@ function Cart({ bgColor }) {
             <div className=" w-full self-start px-6 lg:w-2/3">
               <ul className="divide-y-2  border-b-2 border-t-2">
                 {cart.length ? (
-                  cart.map((c) => <CartItem item={c} key={c.pizzaId} />)
+                  cart.map((c) => (
+                    <CartItem
+                      isLoadingIngredients={fetcher.state === "loading"}
+                      ingredients={
+                        fetcher?.data?.find((el) => el.id === c.pizzaId)
+                          ?.ingredients ?? []
+                      }
+                      item={c}
+                      key={c.pizzaId}
+                    />
+                  ))
                 ) : (
                   <EmptyCart />
                 )}
