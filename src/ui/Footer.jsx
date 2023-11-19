@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import logo from "../images/footer_logo.png";
-import { navigation } from "../utils/navigation";
+
+import Navigation from "./Navigation";
 
 function Footer({ bgColor }) {
   const currentYear = new Date().getFullYear();
@@ -19,15 +20,8 @@ function Footer({ bgColor }) {
             <img className="h-8  w-auto sm:h-16" src={logo} alt="logo" />
           </Link>
           <ul className=" flex justify-between gap-3 sm:gap-5">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                to={item.to}
-                className="text-sm font-semibold leading-6 hover:text-accent200"
-              >
-                {item.name}
-              </Link>
-            ))}
+        
+            <Navigation />
           </ul>
           <ul className="ml-auto flex gap-5 sm:ml-0">
             <svg

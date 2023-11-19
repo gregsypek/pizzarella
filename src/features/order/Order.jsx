@@ -5,27 +5,31 @@ import Card from "../../ui/Card";
 import HeaderTitle from "../../ui/HeaderTitle";
 import { getOrder } from "../../services/apiRestaurant";
 import { useLoaderData } from "react-router-dom";
+import { formatCurrency } from "../../utils/helpers";
 
 function Order({ bgColor }) {
   const order = useLoaderData();
 
-  const {
-    id,
-    // status,
-    // priority,
-    // priorityPrice,
-    // orderPrice,
-    // estimatedDelivery,
-    cart,
-  } = order;
-  console.log("🚀 ~ file: Order.jsx:21 ~ Order ~ order:", order);
+  const { id, status, priority, priorityPrice, orderPrice, cart } = order;
+  console.log(
+    "🚀 ~ file: Order.jsx:21 ~ Order ~ order:",
+    JSON.stringify(order, null, 2),
+  );
 
   return (
     <>
       <div className="mt-24 w-full  p-3 md:bg-bg200 ">
         <div className=" container mx-auto flex  flex-col-reverse items-stretch justify-between  pl-12 pr-6 md:flex-row   md:items-center">
-          <div className="w-full bg-bg200 p-2 md:bg-transparent">
+          <div className="flex w-full gap-6 bg-bg200 p-2 md:bg-transparent">
             <HeaderTitle h1={`Order #${id}`} p={"Check your status"} />
+            {priority && (
+              <span className="self-start  rounded-lg bg-accent200 px-3 py-1 text-sm font-semibold uppercase tracking-wide text-red-50">
+                Priority
+              </span>
+            )}
+            <span className="self-start rounded-lg bg-text100 px-3 py-1 text-sm font-semibold uppercase tracking-wide text-green-50">
+              {status} order
+            </span>
           </div>
           <div className="mb-12 ms-auto md:mb-0 ">
             <SearchOrder placeholder="Search order e.g. #IIDSAT" />
@@ -36,7 +40,9 @@ function Order({ bgColor }) {
         <div className="lg:items-left  flex flex-col items-start justify-start  gap-10 overflow-x-hidden  lg:flex-row lg:items-end ">
           <div className=" self-start px-6 lg:w-2/3">
             <div className="flex flex-wrap items-center justify-between gap-2 py-5">
-              <p className="font-base  text-text100">Only 50 minutes left</p>
+              <p className="font-base  text-text100">
+                Our average delivery time is around 50 minutes.
+              </p>
               <p className="text-sm text-text100">
                 {/* (Estimated delivery: 02.11.2023) */}
               </p>
@@ -59,14 +65,16 @@ function Order({ bgColor }) {
             </ul>
             <div className="space-y-2 py-5">
               <p className="text-sm font-medium text-stone-600">
-                Price pizza: 13
+                Price pizza: {formatCurrency(orderPrice)}
               </p>
 
               <p className="text-sm font-medium text-stone-600">
-                Price priority: 4
+                Price priority: {formatCurrency(priorityPrice)}
               </p>
 
-              <p className="font-bold">To pay on delivery: 17</p>
+              <p className="font-bold">
+                To pay on delivery: {formatCurrency(orderPrice + priorityPrice)}
+              </p>
             </div>
           </div>
 

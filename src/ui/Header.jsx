@@ -6,10 +6,10 @@ import Button from "./Button";
 import { useState } from "react";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { navigation } from "../utils/navigation";
 import Username from "../features/user/UserName";
 import { useDispatch, useSelector } from "react-redux";
 import { updateFirstName } from "../features/user/userSlice";
+import Navigation from "./Navigation";
 
 function Header() {
   const username = useSelector((state) => state.user.firstName);
@@ -39,30 +39,21 @@ function Header() {
           </button>
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
-          {navigation.map((item) => (
-            <Link
-              key={item.name}
-              to={item.to}
-              className="text-sm font-semibold leading-6 hover:text-accent200"
-            >
-              {item.name}
-            </Link>
-          ))}
+          <Navigation />
         </div>
         <div className="hidden items-center lg:flex lg:flex-1 lg:justify-end">
           <div className="px-3">
-          <Username />
-
+            <Username />
           </div>
-       
+
           <Button type="empty" to="/cart">
             Cart
           </Button>
           {username ? (
             <Link
-              onClick={() => dispatch(updateFirstName(''))}
+              onClick={() => dispatch(updateFirstName(""))}
               className="mx-4 text-sm font-semibold leading-6 hover:text-accent200"
-            >            
+            >
               Log out <span aria-hidden="true">&rarr;</span>
             </Link>
           ) : (
@@ -103,15 +94,7 @@ function Header() {
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
-                {navigation.map((item) => (
-                  <Link
-                    key={item.name}
-                    to={item.to}
-                    className="text-text-200  -mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:bg-bg200"
-                  >
-                    {item.name}
-                  </Link>
-                ))}
+                <Navigation />
               </div>
               <div className="py-6">
                 <Link

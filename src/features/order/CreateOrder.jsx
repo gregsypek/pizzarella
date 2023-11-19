@@ -13,29 +13,34 @@ import Card from "../../ui/Card";
 import HeaderTitle from "../../ui/HeaderTitle";
 import { createOrder } from "../../services/apiRestaurant";
 import { useSelector } from "react-redux";
-import { clearCart, getCart } from "../cart/cartSlice";
+import { clearCart, getCart, getTotalCartPrice } from "../cart/cartSlice";
 import { getUsername } from "../user/userSlice";
 import EmptyCart from "../cart/EmptyCart";
 import store from "../../store";
 import BackToMenuLink from "../../ui/BackToMenuLink";
+import { formatCurrency } from "../../utils/helpers";
+import CartOverview from "../cart/CartOverview";
+import { useState } from "react";
 
 const isValidPhone = (phoneNumber) => {
   const phoneRegex = /^\d{9}$/;
   return phoneRegex.test(phoneNumber);
 };
 
+const PRIORITY_PRICE = 0.15;
+
 function CreateOrder({ bgColor }) {
+  const [withPriority, setWithPriority] = useState(false);
   const navigation = useNavigation();
   const isSumbitting = navigation.state === "submitting";
   const username = useSelector(getUsername);
-
   const formErrors = useActionData();
-  console.log(
-    "🚀 ~ file: CreateOrder.jsx:50 ~ CreateOrder ~ formErrors:",
-    formErrors,
-  );
 
   const cart = useSelector(getCart);
+  const totalCartPrice = useSelector(getTotalCartPrice);
+  const priorityPrice = withPriority ? totalCartPrice * PRIORITY_PRICE : 0;
+  const totalPrice = totalCartPrice + priorityPrice;
+
   console.log("🚀 ~ file: CreateOrder.jsx:35 ~ CreateOrder ~ cart:", cart);
   return (
     <>
@@ -58,7 +63,7 @@ function CreateOrder({ bgColor }) {
 
             {!cart.length ? (
               <div className="mt-12">
-               <BackToMenuLink />
+                <BackToMenuLink />
                 <div className=" mt-12 divide-y-2  border-b-2 border-t-2">
                   <EmptyCart />
                 </div>{" "}
@@ -132,8 +137,10 @@ function CreateOrder({ bgColor }) {
                       type="checkbox"
                       name="priority"
                       id="priority"
-                      // value={withPriority}
-                      // onChange={(e) => {}}
+                      value={withPriority}
+                      onChange={(e) => {
+                        setWithPriority(e.target.checked);
+                      }}
                     />
                     <label
                       htmlFor="priority"
@@ -166,7 +173,9 @@ function CreateOrder({ bgColor }) {
 
                 <div className="mt-12">
                   <Button disabled={isSumbitting} type="orange">
-                    {isSumbitting ? "Placing order..." : "Order now"}
+                    {isSumbitting
+                      ? "Placing order..."
+                      : `Order now from ${formatCurrency(totalPrice)}`}
                   </Button>
                 </div>
               </Form>
@@ -185,6 +194,7 @@ function CreateOrder({ bgColor }) {
           </div>
         </div>
       </main>
+      <CartOverview />
     </>
   );
 }
@@ -192,11 +202,10 @@ function CreateOrder({ bgColor }) {
 export async function action({ request }) {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
-
   const order = {
     ...data,
     cart: JSON.parse(data.cart),
-    priority: data.priority === "on",
+    priority: data.priority === "true",
   };
 
   const errors = {};
@@ -206,12 +215,14 @@ export async function action({ request }) {
   if (Object.keys(errors).length > 0) return errors;
 
   const newOrder = await createOrder(order);
+  console.log("🚀 ~ file: CreateOrder.jsx:221 ~ action ~ newOrder:", newOrder);
   //use only when needed - perform optimalization
   store.dispatch(clearCart());
 
+  localStorage.setItem("orderId", JSON.stringify(newOrder.id));
+
   //can't use navigation here - only for components
   return redirect(`/order/${newOrder.id}`);
-  // return null;
 }
 
 export default CreateOrder;

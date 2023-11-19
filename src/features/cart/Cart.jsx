@@ -12,18 +12,16 @@ import CartItem from "./CartItem";
 import EmptyCart from "./EmptyCart";
 import BackToMenuLink from "../../ui/BackToMenuLink";
 
-
-
 function Cart({ bgColor }) {
   // const cart = fakeCart;
-  const username = useSelector(getUsername)
-  const cart  = useSelector(getCart)
-  const dispatch = useDispatch()
+  const username = useSelector(getUsername);
+  const cart = useSelector(getCart);
+  const dispatch = useDispatch();
   const totalCartQuantity = useSelector(getTotalCartQuantity);
-  console.log("🚀 ~ file: Cart.jsx:22 ~ Cart ~ totalCartQuantity:", totalCartQuantity)
-
-
-
+  console.log(
+    "🚀 ~ file: Cart.jsx:22 ~ Cart ~ totalCartQuantity:",
+    totalCartQuantity,
+  );
 
   return (
     <>
@@ -43,21 +41,33 @@ function Cart({ bgColor }) {
           </div>
         </div>
         <div className=" container mx-auto my-12 pe-6  ps-16">
-        <BackToMenuLink/>
+          <BackToMenuLink />
         </div>
-    
-      <div className="container mx-auto  max-h-screen flex-col  bg-bg100   p-6 pe-6 ps-12">
+
+        <div className="container mx-auto  max-h-screen flex-col  bg-bg100   p-6 pe-6 ps-12">
           <div className="lg:items-left relative flex flex-col items-start justify-start  gap-10   lg:flex-row lg:items-end ">
             <div className=" w-full self-start px-6 lg:w-2/3">
               <ul className="divide-y-2  border-b-2 border-t-2">
-               {cart.length ?  cart.map((c) => (
-               <CartItem item={c} key={c.pizzaId}/>
-                )): <EmptyCart/> }
+                {cart.length ? (
+                  cart.map((c) => <CartItem item={c} key={c.pizzaId} />)
+                ) : (
+                  <EmptyCart />
+                )}
               </ul>
-             {cart.length > 0  && <div className="mt-24 flex gap-12">
-                <Button type="gray" >Order pizza</Button>
-                <Button type="empty" disabled={!totalCartQuantity} onClick={()=>dispatch(clearCart())}>Clear cart</Button>
-              </div>}
+              {cart.length > 0 && (
+                <div className="mt-24 flex gap-12">
+                  <Button to="/order/new" type="gray">
+                    Order pizza
+                  </Button>
+                  <Button
+                    type="empty"
+                    disabled={!totalCartQuantity}
+                    onClick={() => dispatch(clearCart())}
+                  >
+                    Clear cart
+                  </Button>
+                </div>
+              )}
             </div>
 
             <div className="mx-6 hidden h-full w-1/3 justify-center lg:flex">
@@ -71,7 +81,7 @@ function Cart({ bgColor }) {
               <img src={bg} alt="pizzarella logo" />
             </div>
           </div>
-        </div>  
+        </div>
       </main>
     </>
   );
