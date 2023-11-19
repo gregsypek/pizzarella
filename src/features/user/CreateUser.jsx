@@ -10,10 +10,7 @@ import { updateFirstName } from "./userSlice";
 
 function CreateUser({ bgColor }) {
   const username = useSelector((state) => state.user.firstName);
-  console.log(
-    "🚀 ~ file: CreateUser.jsx:13 ~ CreateUser ~ username:",
-    username,
-  );
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");

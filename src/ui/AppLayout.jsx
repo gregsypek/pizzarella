@@ -11,10 +11,7 @@ function AppLayout() {
   const isLoading = navigation.state === "loading";
 
   const currentPage = location.pathname;
-  console.log(
-    "🚀 ~ file: AppLayout.jsx:13 ~ AppLayout ~ currentPage:",
-    currentPage,
-  );
+
   let footerType;
   if (currentPage === "/" || currentPage === "/order/new") {
     footerType = "bg-transparent";

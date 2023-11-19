@@ -49,7 +49,7 @@ function CreateOrder({ bgColor }) {
           bgColor ? bgColor : ""
         } absolute left-0 right-0 top-0 h-[80px] w-screen `}
       />
-      <main className="container mx-auto  mt-24 max-h-screen flex-col bg-bg100   p-6  px-6">
+      <main className="container mx-auto  mt-24 max-h-screen flex-col bg-bg100  p-6  px-6">
         <div className="flex justify-end">
           <SearchOrder />
         </div>
@@ -66,7 +66,7 @@ function CreateOrder({ bgColor }) {
                 <BackToMenuLink />
                 <div className=" mt-12 divide-y-2  border-b-2 border-t-2">
                   <EmptyCart />
-                </div>{" "}
+                </div>
               </div>
             ) : (
               <Form method="POST" className="mt-6 ">

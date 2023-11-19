@@ -10,7 +10,6 @@ import CartOverview from "../cart/CartOverview";
 
 function Menu({ bgColor }) {
   const menu = useLoaderData();
-  console.log("🚀 ~ file: Menu.jsx:12 ~ Menu ~ menu:", menu);
   return (
     <>
       <div

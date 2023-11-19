@@ -4,10 +4,7 @@ import { Link } from "react-router-dom";
 function Navigation() {
   const [orderId] = useState(() => {
     const orderId = localStorage.getItem("orderId");
-    console.log(
-      "🚀 ~ file: Navigation.jsx:14 ~ const[orderId,setOrderId]=useState ~ orderId:",
-      orderId,
-    );
+
     return orderId ? JSON.parse(orderId) : undefined;
   });
 

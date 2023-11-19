@@ -8,17 +8,14 @@ import { useFetcher, useLoaderData } from "react-router-dom";
 import { formatCurrency } from "../../utils/helpers";
 import { useEffect } from "react";
 import OrderItem from "./OrderItem";
+import UpdateOrder from "./UpdateOrder";
 
 function Order({ bgColor }) {
   const fetcher = useFetcher();
   const order = useLoaderData();
 
   const { id, status, priority, priorityPrice, orderPrice, cart } = order;
-  console.log(
-    "🚀 ~ file: Order.jsx:21 ~ Order ~ order:",
-    JSON.stringify(order, null, 2),
-  );
-  console.log(fetcher.data);
+  console.log("🚀 ~ file: Order.jsx:18 ~ Order ~ order:", order);
 
   useEffect(
     function () {
@@ -83,6 +80,8 @@ function Order({ bgColor }) {
                 To pay on delivery: {formatCurrency(orderPrice + priorityPrice)}
               </p>
             </div>
+
+            {!priority && <UpdateOrder order={order} />}
           </div>
 
           <div className="relative z-50 mx-6 hidden h-full w-1/3 justify-center lg:flex">

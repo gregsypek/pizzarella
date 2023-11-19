@@ -1,7 +1,6 @@
 import { formatCurrency } from "../../utils/helpers";
 
 function OrderItem({ item, isLoadingIngredients, ingredients }) {
-  console.log("🚀 ~ file: OrderItem.jsx:2 ~ OrderItem ~ item:", item);
   const { quantity, name, totalPrice } = item;
   return (
     <li className="space-x-1 py-3">
