@@ -13,17 +13,17 @@ function AppLayout() {
   const currentPage = location.pathname;
 
   let footerType;
-  if (currentPage === "/" || currentPage === "/order/new") {
+  if (currentPage === "/order/new") {
     footerType = "bg-transparent";
   } else {
     footerType = "bg-bg200";
   }
   return (
-    <div className="relative flex h-screen flex-col bg-bg100">
+    <div className="relative mx-auto flex h-screen flex-col overflow-x-hidden bg-bg100">
       {/* <div className="grid-rows-[auto,minmax(1fr, 1fr),auto] relative grid h-screen bg-bg100"> */}
       {isLoading && <Loader />}
       <Header />
-      <div className="flex-1">
+      <div className="flex-1 ">
         <Outlet />
       </div>
       <Footer bgColor={footerType} />

@@ -13,7 +13,7 @@ function Features({ bgColor }) {
       <div
         className={` ${
           bgColor ? bgColor : ""
-        } absolute left-0 right-1/3 top-0 z-10 h-[110px] rounded-r-lg xl:right-2/3 `}
+        } absolute left-0 right-1/2 top-0 z-10 h-[110px] rounded-r-lg  xl:right-3/4 `}
       />
       <img
         src={leaves}
@@ -24,12 +24,12 @@ function Features({ bgColor }) {
         id="features"
         className=" container mx-auto flex  flex-col  p-6  px-7  "
       >
-        <div className="relative z-20">
+        <div className="relative z-20 ">
           <HeaderTitle h1="Discover" p="Our special offers" />
         </div>
         <div
-          className=" flex flex-wrap justify-center
-       gap-16 py-24 sm:justify-around sm:pt-28 md:gap-10 lg:px-12  "
+          className="flex grow flex-wrap justify-center gap-16
+       py-24 sm:justify-around sm:pt-28 md:gap-10 lg:px-12  "
         >
           {/* pizza1 */}
           <div className=" flex  min-w-[260px] flex-col items-center  sm:w-[30%] ">

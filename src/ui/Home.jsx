@@ -5,7 +5,9 @@ import Cta from "./Cta";
 function Home() {
   return (
     <>
+      {/* <div className="relative"> */}
       <Hero bgColor={"bg-accent100"} />
+      {/* </div> */}
 
       <div className="relative">
         <Features bgColor={"bg-accent100"} />
