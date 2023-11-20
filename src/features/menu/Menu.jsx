@@ -19,7 +19,7 @@ function Menu({ bgColor }) {
       />
       <main className="container mx-auto my-24  flex-col bg-bg100   p-6  px-6">
         <div className="mb-6 flex  justify-end">
-          <SearchOrder />
+          <SearchOrder placeholder="Search order e.g. #IIDSAT" />
         </div>
         <div className="lg:items-left relative flex  flex-col items-start justify-start   gap-10  lg:flex-row lg:items-end ">
           <div className=" w-full px-6  ">

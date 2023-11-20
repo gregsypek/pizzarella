@@ -51,7 +51,7 @@ function CreateOrder({ bgColor }) {
       />
       <main className="container mx-auto  mt-24 max-h-screen flex-col bg-bg100  p-6  px-6">
         <div className="flex justify-end">
-          <SearchOrder />
+            <SearchOrder placeholder="Search order e.g. #IIDSAT" />      
         </div>
         <div className="lg:items-left relative  mb-16 mt-12 flex flex-col items-start   justify-start gap-10  lg:flex-row lg:items-end ">
           <div className=" w-full self-start px-6 lg:w-2/3">

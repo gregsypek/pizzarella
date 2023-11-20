@@ -46,7 +46,7 @@ function Cart({ bgColor }) {
               <HeaderTitle h1={`Your order, ${username}`} p={""} />
             </div>
             <div className="mb-4 ms-auto md:mb-0 ">
-              <SearchOrder />
+              <SearchOrder placeholder="Search order e.g. #IIDSAT" />
             </div>
           </div>
         </div>

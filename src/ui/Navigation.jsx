@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+
+const activeStyle = {
+  color: "red", //
+  fontWeight: "bold",
+};
 
 function Navigation() {
   const [orderId] = useState(() => {
@@ -9,7 +14,7 @@ function Navigation() {
   });
 
   const navigation = [
-    { name: "About Us", to: "/#feature" },
+    { name: "Home", to: "/" },
     { name: "Menu", to: "/menu" },
     { name: "New Order", to: "/order/new" },
     ...(orderId !== undefined
@@ -35,13 +40,25 @@ const NavItem = ({ item }) => {
   const { name, to } = item;
   return (
     <div>
-      <Link
+      <NavLink
         key={name}
         to={to}
-        className="text-text-200  -mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:text-accent200"
+        // className={`text-text-200  ${({ isActive }) =>
+        //   isActive
+        //     ? "text-accent200"
+        //     : ""} -mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:text-accent200`}
+        // >
+
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "pending"
+            : isActive
+            ? "-mx-3 rounded-lg px-3 py-2 text-base font-bold leading-7 text-accent200 hover:bg-bg200"
+            : "-mx-3 rounded-lg px-3 py-2 text-base font-bold leading-7 hover:bg-bg200"
+        }
       >
         {name}
-      </Link>
+      </NavLink>
     </div>
   );
 };

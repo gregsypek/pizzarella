@@ -20,7 +20,6 @@ function Footer({ bgColor }) {
             <img className="h-8  w-auto sm:h-16" src={logo} alt="logo" />
           </Link>
           <ul className=" flex justify-between gap-3 sm:gap-5">
-        
             <Navigation />
           </ul>
           <ul className="ml-auto flex gap-5 sm:ml-0">
@@ -61,7 +60,7 @@ function Footer({ bgColor }) {
             <span> &copy;gregsypek.</span>
             <span>All rights reserved.</span>
           </p>
-          <ul className="order-1 flex justify-evenly gap-3  sm:order-1 ">
+          <ul className="order-1  flex justify-evenly gap-3 text-sm  sm:order-1 ">
             <li className="text-center">Privacy Policy</li>
             <li className="text-center">Terms of Service</li>
             <li className="text-center">Cookies Settings</li>
