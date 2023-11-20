@@ -20,7 +20,7 @@ function Hero({ bgColor }) {
       "
         >
           <div className=" w-1/2">
-            <h1 className="relative z-10 text-5xl font-bold tracking-tight text-black sm:text-7xl ">
+            <h1 className="text-5xl font-bold tracking-tight text-black sm:text-7xl ">
               Delicious Pizza
             </h1>
             <p className="mt-5 text-2xl font-bold capitalize leading-8 text-text200 md:text-3xl md:font-normal">
@@ -29,7 +29,7 @@ function Hero({ bgColor }) {
               <span className=" block"> Doorstep</span>
             </p>
             <p
-              className="relative z-50 mt-8 w-[100%] bg-bg100 p-2 text-sm sm:w-[70%] sm:max-w-fit md:text-lg lg:max-w-[80%]"
+              className=" mt-8 w-[100%] bg-bg100 p-2 text-sm sm:w-[70%] sm:max-w-fit md:text-lg lg:max-w-[80%]"
               id="feature "
             >
               Craving a mouthwatering pizza? Look no further! Our delivery
@@ -56,7 +56,6 @@ function Hero({ bgColor }) {
           </div>
         </div>
       </section>
-    
     </>
   );
 }

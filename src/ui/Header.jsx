@@ -21,7 +21,7 @@ function Header() {
         className="flex items-center justify-between px-6 py-4 lg:px-8"
         aria-label="Global"
       >
-        <div className="flex overflow-hidden lg:flex-1">
+        <div className="z-10 flex overflow-hidden lg:flex-1">
           <Link to="/" className="-m-1.5 flex items-center  p-1.5">
             <span className="sr-only">Pizzarella</span>
             <img className="h-12 w-auto" src={logo} alt="logo" />
@@ -75,7 +75,7 @@ function Header() {
       >
         <div className="fixed inset-0 z-50" />
         {/* background blur */}
-        <div className="z-51 fixed inset-0 h-full  w-full bg-bg200 opacity-80 blur-sm lg:block "></div>
+        <div className="fixed inset-0 h-full  w-full bg-bg200 opacity-80 blur-sm lg:block "></div>
         <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-bg100 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-text100">
           <div className="flex items-center justify-between">
             <Link to="/" className="-m-1.5 p-1.5">
