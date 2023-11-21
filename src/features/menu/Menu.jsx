@@ -17,7 +17,7 @@ function Menu({ bgColor }) {
           bgColor ? bgColor : ""
         } absolute left-0 right-0 top-0 h-[80px] w-screen `}
       />
-      <main className="container mx-auto my-24  flex-col bg-bg100   p-6  px-6">
+      <main className="bg-bg00 container mx-auto  my-24 flex-col   p-6  px-6">
         <div className="mb-6 flex  justify-end">
           <SearchOrder placeholder="Search order e.g. #IIDSAT" />
         </div>
@@ -34,7 +34,7 @@ function Menu({ bgColor }) {
                   <MenuItem pizza={pizza} key={pizza.id} />
                 ))}
               </div>
-              <div className="mx-6 hidden h-full flex-col flex-wrap items-end gap-12 self-center overflow-y-auto lg:w-1/3  2xl:flex ">
+              <div className="self-top mx-6 mt-16 hidden h-full flex-col flex-wrap items-end gap-12 overflow-y-auto lg:w-1/3  2xl:flex ">
                 <Card
                   img={card4}
                   title="Fast delivery service"

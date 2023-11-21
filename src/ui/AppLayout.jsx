@@ -14,9 +14,9 @@ function AppLayout() {
 
   let footerType;
   if (currentPage === "/order/new") {
-    footerType = "bg-transparent";
-  } else {
     footerType = "bg-bg200";
+  } else {
+    footerType = "bg-bg100";
   }
   return (
     <div className="relative mx-auto flex h-screen flex-col overflow-x-hidden bg-bg100">

@@ -19,14 +19,12 @@ const CartOverview = () => {
   if (!totalCartQuantity) return null;
   if (hideCart)
     return (
-      <div className="  fixed bottom-20 right-0 z-50 rounded-2xl border-2 border-bg300 bg-text200 p-2  sm:p-3 ">
-        <div className="flex cursor-pointer justify-center  items-center">
-          <span
-            role="img"
-            aria-label="Shopping Cart"
-            className="text-white hover:text-accent200"
-            onClick={() => setHideCart(false)}
-          >
+      <div
+        className="  fixed bottom-20 right-0 z-50 cursor-pointer rounded-2xl border-2 border-text200 bg-accent100 p-2 hover:bg-bg100  sm:p-3 "
+        onClick={() => setHideCart(false)}
+      >
+        <div className="flex cursor-pointer items-center  justify-center">
+          <span role="img" aria-label="Shopping Cart" className="text-black">
             {" "}
             <FontAwesomeIcon icon={faShoppingCart} />
           </span>
@@ -35,10 +33,10 @@ const CartOverview = () => {
     );
 
   return (
-    <div className=" sm:w-30 fixed bottom-20 right-0 z-50 w-20 rounded-2xl border-2 border-bg300 bg-text200 p-2 sm:w-32 sm:p-3 ">
+    <div className=" sm:w-30 fixed bottom-20 right-0 z-50 w-20 rounded-2xl border-2  border-text200 bg-accent100 p-2 sm:w-32 sm:p-3 ">
       <div className="flex cursor-pointer justify-end ">
         <span
-          className=" text-lg text-bg100 hover:text-accent200"
+          className=" text-lg text-text200 hover:text-accent200"
           onClick={() => setHideCart(true)}
           aria-hidden="true"
         >
@@ -46,7 +44,10 @@ const CartOverview = () => {
         </span>
       </div>
       <div className="flex flex-col justify-between gap-1 sm:gap-3">
-        <Link className=" text-center  hover:text-accent200 text-sm font-bold capitalize text-bg100 sm:text-base " to="/cart">
+        <Link
+          className=" capitalizetext-text200  text-center text-sm font-bold hover:text-accent200 sm:text-base "
+          to="/cart"
+        >
           Cart
         </Link>
 
@@ -57,10 +58,10 @@ const CartOverview = () => {
               "linear-gradient(90deg, rgba(255, 87, 34, 0.00) 0%, #979797 51.62%, rgba(255, 87, 34, 0.00) 100%)",
           }}
         />
-        <p className=" text-center  text-xs font-normal text-bg100  sm:text-sm ">
+        <p className=" text-center  text-xs font-normal text-text200 sm:text-sm ">
           {totalCartQuantity} pizzas
         </p>
-        <div className="text-center text-xs font-normal text-bg100 sm:mt-2  sm:text-sm">
+        <div className="font-normaltext-text200sm:mt-2 text-center text-xs  sm:text-sm">
           <span className="font-bold ">Total:</span> {totalCartPrice}
         </div>
       </div>

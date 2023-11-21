@@ -24,40 +24,47 @@ function MenuItem({ pizza }) {
   }
   return (
     <div
-      className={` p-2 relative rounded-xl border border-bg300 bg-opacity-50 text-text100 ${
+      className={` relative rounded-xl border border-bg300 bg-opacity-50 p-2 text-text100 ${
         soldOut ? "bg-bg200 opacity-70" : ""
       } sm:text-sm sm:leading-6`}
     >
       <img
         src={imageUrl}
         alt="small pizza"
-        className=" absolute left-2  top-2 z-50 my-0 hidden  aspect-square h-full  rounded-full sm:inset-0 sm:left-3 sm:my-auto sm:block "
+        className=" border-3 absolute  left-2 top-2 z-50 my-0  hidden aspect-square  h-full rounded-full border-bg100 object-cover sm:inset-0 sm:left-3 sm:my-auto sm:block"
       />
 
       <div className=" relative  h-full w-full flex-wrap text-black sm:h-[80px]">
         <div className="flex h-full flex-col justify-start gap-4 px-3 sm:flex-row md:gap-6">
-          <div className="absolute  hidden aspect-square h-[140%] w-auto  -translate-x-[15%] -translate-y-[15%] rounded-full border  bg-bg200 sm:block "></div>
+          <div className="absolute  hidden aspect-square h-[145%] w-auto  -translate-x-[15%] -translate-y-[15%] rounded-full   bg-bg200 sm:block "></div>
           <div className="mr-auto flex h-full w-full  flex-col justify-around sm:w-2/3 ">
             <div className=" flex flex-row justify-between   p-3 sm:ml-[100px] sm:flex-col">
-              <div>
+              <div className="space-y-2">
                 <p className=" text-sm font-bold md:text-base">{name}</p>
 
-                <p className="flex-wrap text-xs md:text-sm">
+                <p className="flex-wrap text-xs font-normal md:text-sm">
                   {ingredients.join(", ")}
                 </p>
               </div>
-              <p className="text-sm font-semibold md:text-base">{formatCurrency(unitPrice)}</p>
+              <p className="mt-2 text-sm font-normal md:text-base">
+                {formatCurrency(unitPrice)}
+              </p>
             </div>
           </div>
           <div className=" min-w-fit self-end  sm:w-1/3  sm:self-center ">
             <div
-              className="flex justify-between gap-3 gap2  p-2 
+              className="gap2 flex justify-between gap-3  p-2 
              lg:gap-3"
             >
               <div className="flex items-center justify-center gap-3 align-middle">
-             {isInCart &&   <UpdateItemQuantity pizzaId={id} currentQuantity={currentQuantity}/>}
+                {isInCart && (
+                  <UpdateItemQuantity
+                    pizzaId={id}
+                    currentQuantity={currentQuantity}
+                  />
+                )}
               </div>
-              <div className="flex justify-center">
+              <div className="flex self-center">
                 {!soldOut && !isInCart && (
                   <Button type="smallYellow" onClick={handleAddToCart}>
                     Add To Cart
@@ -65,9 +72,11 @@ function MenuItem({ pizza }) {
                 )}
                 {isInCart && <DeleteItem pizzaId={id} size="normal" />}
 
-                {soldOut && <span className="px-2.5 sm:px-2.5 py-2.5 text-sm font-semibold uppercase tracking-wide text-text100 sm:text-base md:px-7">
-                  Sold out
-                </span>}
+                {soldOut && (
+                  <span className="px-2.5 py-2.5 text-sm font-semibold uppercase tracking-wide text-text100 sm:px-2.5 sm:text-base md:px-7">
+                    Sold out
+                  </span>
+                )}
               </div>
             </div>
           </div>

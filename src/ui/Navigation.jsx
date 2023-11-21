@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
-const activeStyle = {
-  color: "red", //
-  fontWeight: "bold",
-};
-
 function Navigation() {
   const [orderId] = useState(() => {
     const orderId = localStorage.getItem("orderId");
