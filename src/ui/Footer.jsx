@@ -7,7 +7,7 @@ function Footer({ bgColor }) {
   const currentYear = new Date().getFullYear();
   return (
     <div
-      className={` ${bgColor ? bgColor : ""} m-h-screen mt-12 w-screen px-6`}
+      className={` ${bgColor ? bgColor : ""}  w-screen px-6 `}
     >
       <section
         id="footer"

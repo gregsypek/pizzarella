@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import logo from "../images/logo.png";
 import Button from "./Button";
 
-import { useState } from "react";
+import {  useState } from "react";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Username from "../features/user/UserName";
@@ -15,6 +15,7 @@ function Header() {
   const username = useSelector((state) => state.user.firstName);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const dispatch = useDispatch();
+
   return (
     <header className="container absolute inset-x-0 top-0 z-50 mx-auto overflow-x-hidden ">
       <nav
@@ -94,23 +95,24 @@ function Header() {
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
-                <Navigation />
+                <Navigation onClick={setMobileMenuOpen}/>
               </div>
               <div className="py-6">
                 <Link
                   to="/register"
                   className="text-text-200 -mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 hover:bg-bg200"
+                  onClick={() => setMobileMenuOpen(false)}
                 >
                   Log in
                 </Link>
               </div>
               <div className="py-6">
-                <Link
+                {/* <Link
                   to="order/new"
                   className="text-text-200 -mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 hover:bg-bg200"
                 >
                   Order
-                </Link>
+                </Link> */}
               </div>
             </div>
           </div>

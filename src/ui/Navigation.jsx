@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
-function Navigation() {
+function Navigation({onClick}) {
   const [orderId] = useState(() => {
     const orderId = localStorage.getItem("orderId");
 
@@ -25,19 +25,20 @@ function Navigation() {
   return (
     <>
       {navigation.map((item, index) => (
-        <NavItem key={index} item={item} />
+        <NavItem key={index} item={item} onClick={onClick}/>
       ))}
     </>
   );
 }
 
-const NavItem = ({ item }) => {
+const NavItem = ({ item, onClick }) => {
   const { name, to } = item;
   return (
     <div>
       <NavLink
         key={name}
         to={to}
+        onClick={()=>onClick(false)}
         // className={`text-text-200  ${({ isActive }) =>
         //   isActive
         //     ? "text-accent200"

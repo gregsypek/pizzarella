@@ -8,7 +8,6 @@ import {
 } from "react-router-dom";
 import Button from "../../ui/Button";
 import card1 from "../../images/card1_bg.png";
-import bg from "../../images/order_bg.png";
 import Card from "../../ui/Card";
 import HeaderTitle from "../../ui/HeaderTitle";
 import { createOrder } from "../../services/apiRestaurant";
@@ -21,6 +20,7 @@ import BackToMenuLink from "../../ui/BackToMenuLink";
 import { formatCurrency } from "../../utils/helpers";
 import CartOverview from "../cart/CartOverview";
 import { useState } from "react";
+import CardLogo from "../../ui/CardLogo";
 
 const isValidPhone = (phoneNumber) => {
   const phoneRegex = /^\d{9}$/;
@@ -49,7 +49,7 @@ function CreateOrder({ bgColor }) {
           bgColor ? bgColor : ""
         } absolute left-0 right-0 top-0 h-[80px] w-screen `}
       />
-      <main className="container mx-auto  mt-24 max-h-screen flex-col bg-bg100  p-6  px-6">
+      <main className="container mx-auto  mt-24  flex-col bg-bg100  p-6  px-6">
         <div className="flex justify-end">
             <SearchOrder placeholder="Search order e.g. #IIDSAT" />      
         </div>
@@ -144,7 +144,7 @@ function CreateOrder({ bgColor }) {
                     />
                     <label
                       htmlFor="priority"
-                      className="text-sm   font-normal leading-6 tracking-normal text-text100 md:mt-0"
+                      className=" text-xs sm:text-sm   font-normal leading-2 sm:leading-6 tracking-normal text-text100 md:mt-0"
                     >
                       Want to yo give your order priority?
                     </label>
@@ -160,7 +160,7 @@ function CreateOrder({ bgColor }) {
                     />
                     <label
                       htmlFor="policy"
-                      className="text-sm   font-normal leading-6 tracking-normal text-text100 md:mt-0"
+                      className="sm:text-sm text-xs  font-normal leading-2 sm:leading-6 tracking-normal text-text100 md:mt-0"
                     >
                       By selecting this, you agree to our{" "}
                       <Link to="#" className="font-semibold text-primary200 ">
@@ -189,9 +189,8 @@ function CreateOrder({ bgColor }) {
               subtitle="20 years of craftmenship"
             />
           </div>
-          <div className="absolute -bottom-28 -right-14   lg:hidden ">
-            <img src={bg} alt="pizzarella logo" />
-          </div>
+       
+          <CardLogo/>
         </div>
       </main>
       <CartOverview />

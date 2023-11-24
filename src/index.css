@@ -15,6 +15,9 @@
   .link-active {
     @apply font-bold text-accent200;
   }
+  #root {
+    @apply bg-bg100;
+  }
   .checkbox {
     @apply me-5 h-6 w-6 rounded-md accent-primary100  ring-text100 focus:outline-none focus:ring focus:ring-primary200 focus:ring-offset-2;
   }

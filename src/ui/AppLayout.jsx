@@ -19,13 +19,13 @@ function AppLayout() {
     footerType = "bg-bg100";
   }
   return (
-    <div className="relative mx-auto flex h-screen flex-col overflow-x-hidden bg-bg100">
-      {/* <div className="grid-rows-[auto,minmax(1fr, 1fr),auto] relative grid h-screen bg-bg100"> */}
+    // <div className="relative mx-auto flex-1  flex-col overflow-x-hidden bg-bg100">
+       <div className="grid-rows-[auto,minmax(1fr, 1fr),auto] relative grid h-screen bg-bg100"> 
       {isLoading && <Loader />}
       <Header />
-      <div className="flex-1 ">
+      {/* <div className=" "> */}
         <Outlet />
-      </div>
+      {/* </div> */}
       <Footer bgColor={footerType} />
     </div>
   );

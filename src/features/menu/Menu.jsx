@@ -1,4 +1,3 @@
-import bg from "../../images/order_bg.png";
 import Card from "../../ui/Card";
 import HeaderTitle from "../../ui/HeaderTitle";
 import SearchOrder from "../order/SearchOrder";
@@ -7,6 +6,7 @@ import card4 from "../../images/card4_bg.png";
 import { getMenu } from "../../services/apiRestaurant";
 import { useLoaderData } from "react-router-dom";
 import CartOverview from "../cart/CartOverview";
+import CardLogo from "../../ui/CardLogo";
 
 function Menu({ bgColor }) {
   const menu = useLoaderData();
@@ -17,7 +17,7 @@ function Menu({ bgColor }) {
           bgColor ? bgColor : ""
         } absolute left-0 right-0 top-0 h-[80px] w-screen `}
       />
-      <main className="bg-bg00 container mx-auto  my-24 flex-col   p-6  px-6">
+      <main className=" container mx-auto lg:mb-16 my-4 flex-col   p-6  px-6">
         <div className="mb-6 flex  justify-end">
           <SearchOrder placeholder="Search order e.g. #IIDSAT" />
         </div>
@@ -42,10 +42,7 @@ function Menu({ bgColor }) {
                 />
               </div>
             </div>
-
-            <div className="absolute -bottom-28 -right-14   lg:hidden ">
-              <img src={bg} alt="pizzarella logo" />
-            </div>
+            <CardLogo/>
           </div>
         </div>
         <CartOverview />

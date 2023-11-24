@@ -1,6 +1,5 @@
 import SearchOrder from "./SearchOrder";
 import card3 from "../../images/card3_bg.png";
-import bg from "../../images/order_bg.png";
 import Card from "../../ui/Card";
 import HeaderTitle from "../../ui/HeaderTitle";
 import { getOrder } from "../../services/apiRestaurant";
@@ -9,6 +8,7 @@ import { formatCurrency } from "../../utils/helpers";
 import { useEffect } from "react";
 import OrderItem from "./OrderItem";
 import UpdateOrder from "./UpdateOrder";
+import CardLogo from "../../ui/CardLogo";
 
 function Order({ bgColor }) {
   const fetcher = useFetcher();
@@ -29,14 +29,17 @@ function Order({ bgColor }) {
         <div className=" container mx-auto flex  flex-col-reverse items-stretch justify-between  pl-12 pr-6 md:flex-row   md:items-center">
           <div className="flex w-full gap-6 bg-bg200 p-2 md:bg-transparent">
             <HeaderTitle h1={`Order #${id}`} p={"Check your status"} />
+            <div className="flex flex-col gap-3 sm:flex-row">
+
             {priority && (
               <span className="self-start  rounded-lg bg-accent200 px-3 py-1 text-sm font-semibold uppercase tracking-wide text-red-50">
                 Priority
               </span>
             )}
-            <span className="self-start rounded-lg bg-text100 px-3 py-1 text-sm font-semibold uppercase tracking-wide text-green-50">
+            <span  className=" self-start flex-shrink-0 rounded-lg bg-text100 px-3 py-1 text-sm font-semibold uppercase tracking-wide text-green-50">
               {status} order
             </span>
+            </div>
           </div>
           <div className="mb-12 ms-auto md:mb-0 ">
             <SearchOrder placeholder="Search order e.g. #IIDSAT" />
@@ -91,14 +94,14 @@ function Order({ bgColor }) {
               subtitle="Find a perfect one"
             />
           </div>
-          <div className="absolute -right-14 bottom-6   lg:hidden ">
-            <img src={bg} alt="pizzarella logo" />
-          </div>
+         
+          <CardLogo/>
+         
         </div>
       </main>
       <div
         className={` ${bgColor ? bgColor : ""}  
-				  h-[150px]  w-screen`}
+				  h-[150px] hidden lg:block w-screen`}
       />
     </>
   );

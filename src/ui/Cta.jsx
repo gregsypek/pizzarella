@@ -8,11 +8,11 @@ function Cta({ bgColor }) {
       <div
         className={` ${
           bgColor ? bgColor : ""
-        } absolute left-[80%] right-0 z-10 h-full rounded-l-xl sm:left-[40%] sm:right-[40%] lg:left-1/2 lg:hidden   `}
+        } absolute left-[80%] right-0 z-10 h-full rounded-l-xl sm:left-[40%] sm:right-[40%]  lg:left-1/2 lg:hidden   `}
       />
       <section
         id="cta"
-        className="mx-auto mt-10 h-[400px] max-w-[1440px] bg-bg100 bg-right bg-no-repeat p-6 sm:mt-16 sm:bg-transparent md:mt-10 xl:mt-0"
+        className="mx-auto mt-10 h-[400px] max-w-[1440px] bg-bg100 bg-right bg-no-repeat p-6 sm:mt-16 sm:bg-transparent md:mt-10 lg:mb-16  xl:mt-0"
         style={{
           backgroundImage: `url(${pizzaBg})`,
         }}

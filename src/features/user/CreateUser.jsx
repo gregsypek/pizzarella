@@ -1,11 +1,11 @@
 import Button from "../../ui/Button";
 import HeaderTitle from "../../ui/HeaderTitle";
 import Card from "../../ui/Card";
-import bg from "../../images/order_bg.png";
 import card5 from "../../images/card5_bg.png";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateFirstName } from "./userSlice";
+import CardLogo from "../../ui/CardLogo";
 // import { useNavigate } from "react-router-dom";
 
 function CreateUser({ bgColor }) {
@@ -30,7 +30,7 @@ function CreateUser({ bgColor }) {
           bgColor ? bgColor : ""
         } absolute left-0 right-0 top-0 h-[80px] w-screen `}
       />
-      <main className="container mx-auto  mt-40 max-h-screen flex-col bg-bg100   p-6  px-6">
+      <main className="container mx-auto  mt-40 lg:mb-14 max-h-screen flex-col bg-bg100   p-6  px-6">
         <div className="lg:items-left relative mb-16 flex flex-col items-start   justify-start gap-10  lg:flex-row lg:items-end ">
           <div className=" w-full px-6 self-start lg:w-2/3 ">
             <HeaderTitle
@@ -114,9 +114,10 @@ function CreateUser({ bgColor }) {
               subtitle="Grab an extra discount on our pizza"
             />
           </div>
-          <div className="absolute -bottom-28 -right-14   lg:hidden ">
+          {/* <div className="absolute -bottom-28 -right-14   lg:hidden ">
             <img src={bg} alt="pizzarella logo" />
-          </div>
+          </div> */}
+          <CardLogo/>
         </div>
       </main>
     </>
