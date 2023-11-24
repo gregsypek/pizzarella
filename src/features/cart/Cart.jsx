@@ -42,10 +42,10 @@ function Cart({ bgColor }) {
       <main className="w-full">
         <div className="mt-24 w-full  p-3 md:bg-bg200 ">
           <div className=" container mx-auto flex  flex-col-reverse items-stretch justify-between  pl-0 sm:pl-12 pr-6 md:flex-row   md:items-center">
-            <div className="w-full bg-bg200 p-2 md:bg-transparent">
+            <div className="w-full bg-bg200 p-2 mt-10 md:bg-transparent">
               <HeaderTitle h1={`Your order, ${username}`} p={""} />
             </div>
-            <div className="mb-4 ms-auto md:mb-0 ">
+            <div className="my-4 ms-auto md:mb-0 bg-red-300">
               <SearchOrder placeholder="Search order e.g. #IIDSAT" />
             </div>
           </div>
@@ -75,7 +75,7 @@ function Cart({ bgColor }) {
                 )}
               </ul>
               {cart.length > 0 && (
-                <div className="mt-24 flex gap-12">
+                <div className="mt-24 flex gap-6 sm:gap-12">
                   <Button to="/order/new" type="gray">
                     Order pizza
                   </Button>

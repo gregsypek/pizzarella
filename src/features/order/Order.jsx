@@ -26,8 +26,8 @@ function Order({ bgColor }) {
   return (
     <>
       <div className="mt-24 w-full  p-3 md:bg-bg200 ">
-        <div className=" container mx-auto flex  flex-col-reverse items-stretch justify-between  pl-12 pr-6 md:flex-row   md:items-center">
-          <div className="flex w-full gap-6 bg-bg200 p-2 md:bg-transparent">
+        <div className=" container mx-auto flex  flex-col-reverse items-stretch justify-between pl-0 sm:pl-12 pr-6 md:flex-row   md:items-center">
+          <div className="flex w-full gap-6 bg-bg200 p-2 sm:pe-4 md:bg-transparent">
             <HeaderTitle h1={`Order #${id}`} p={"Check your status"} />
             <div className="flex flex-col gap-3 sm:flex-row">
 
@@ -46,9 +46,9 @@ function Order({ bgColor }) {
           </div>
         </div>
       </div>
-      <main className="container mx-auto my-12 flex-col   bg-bg100   pe-6 ps-12">
+      <main className="container mx-auto my-12 flex-col   bg-bg100   pe-6 ps-0 sm:ps-12">
         <div className="lg:items-left  flex flex-col items-start justify-start  gap-10 overflow-x-hidden  lg:flex-row lg:items-end ">
-          <div className=" self-start px-6 lg:w-2/3">
+          <div className=" self-start  ps-6 sm:p-0 lg:w-2/3">
             <div className="flex flex-wrap items-center justify-between gap-2 py-5">
               <p className="font-base  text-text100">
                 Our average delivery time is around 50 minutes.

@@ -20,13 +20,17 @@ function AppLayout() {
   }
   return (
     // <div className="relative mx-auto flex-1  flex-col overflow-x-hidden bg-bg100">
-       <div className="grid-rows-[auto,minmax(1fr, 1fr),auto] relative grid h-screen bg-bg100"> 
+       <div className="grid-rows-[auto,minmax(1fr, 1fr),auto] relative grid h-screen bg-bg100 overflow-x-hidden"> 
       {isLoading && <Loader />}
       <Header />
       {/* <div className=" "> */}
         <Outlet />
       {/* </div> */}
+ 
+
       <Footer bgColor={footerType} />
+
+    
     </div>
   );
 }

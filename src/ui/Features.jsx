@@ -13,7 +13,7 @@ function Features({ bgColor }) {
       <div
         className={` ${
           bgColor ? bgColor : ""
-        } absolute left-0 right-1/2 top-0  h-[110px] rounded-r-lg  xl:right-3/4 `}
+        } absolute left-0  right-1/3 sm:right-1/2 top-0  h-[110px] rounded-r-lg  xl:right-3/4 `}
       />
       <img
         src={leaves}

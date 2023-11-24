@@ -39,7 +39,7 @@ function Header() {
             <Bars3Icon className="h-8 w-8" aria-hidden="true" />
           </button>
         </div>
-        <div className="hidden lg:flex lg:gap-x-12">
+        <div className="hidden lg:flex text-base lg:gap-x-12">
           <Navigation />
         </div>
         <div className="hidden items-center lg:flex lg:flex-1 lg:justify-end">
@@ -94,7 +94,7 @@ function Header() {
           </div>
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
-              <div className="space-y-2 py-6">
+              <div className="space-y-2 py-6 flex flex-col">
                 <Navigation onClick={setMobileMenuOpen}/>
               </div>
               <div className="py-6">

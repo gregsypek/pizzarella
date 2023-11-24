@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 function Navigation({onClick}) {
+
   const [orderId] = useState(() => {
     const orderId = localStorage.getItem("orderId");
 
@@ -34,7 +35,7 @@ function Navigation({onClick}) {
 const NavItem = ({ item, onClick }) => {
   const { name, to } = item;
   return (
-    <div>
+ 
       <NavLink
         key={name}
         to={to}
@@ -49,13 +50,13 @@ const NavItem = ({ item, onClick }) => {
           isPending
             ? "pending"
             : isActive
-            ? "-mx-3 rounded-lg px-3 py-2 text-base font-bold leading-7 text-accent200 hover:bg-bg200"
-            : "-mx-3 rounded-lg px-3 py-2 text-base font-bold leading-7 hover:bg-bg200"
+            ? "-mx-3 rounded-lg px-3 py-2  font-bold leading-7 text-accent200 hover:bg-bg200"
+            : "-mx-3 rounded-lg px-3 py-2  font-bold leading-7 hover:bg-bg200"
         }
       >
         {name}
       </NavLink>
-    </div>
+   
   );
 };
 

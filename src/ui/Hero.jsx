@@ -20,7 +20,7 @@ function Hero({ bgColor }) {
       "
         >
           <div className=" w-1/2">
-            <h1 className="text-5xl font-bold tracking-tight text-black sm:text-7xl ">
+            <h1 className="relative sm:static z-10  text-5xl font-bold tracking-tight text-black sm:text-7xl ">
               Delicious Pizza
             </h1>
             <p className="mt-5 text-2xl font-bold capitalize leading-8 text-text200 md:text-3xl md:font-normal">
