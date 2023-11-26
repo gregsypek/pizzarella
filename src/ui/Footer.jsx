@@ -20,7 +20,7 @@ function Footer({ bgColor }) {
             <img className="h-8  w-auto sm:h-16" src={logo} alt="logo" />
           </Link>
           <ul className=" flex justify-between gap-3 sm:gap-5 text-sm item text-center">
-            <Navigation type="footer"/>
+            <Navigation />
           </ul>
           <ul className="ml-auto flex gap-5 sm:ml-0">
             <svg

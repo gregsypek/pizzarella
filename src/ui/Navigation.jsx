@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
-function Navigation({onClick}) {
-
+function Navigation({ onClick }) {
   const [orderId] = useState(() => {
     const orderId = localStorage.getItem("orderId");
 
@@ -26,7 +25,7 @@ function Navigation({onClick}) {
   return (
     <>
       {navigation.map((item, index) => (
-        <NavItem key={index} item={item} onClick={onClick}/>
+        <NavItem key={index} item={item} onClick={onClick} />
       ))}
     </>
   );
@@ -34,13 +33,13 @@ function Navigation({onClick}) {
 
 const NavItem = ({ item, onClick }) => {
   const { name, to } = item;
-  return (
- 
+
+  if (onClick) {
+    return (
       <NavLink
         key={name}
         to={to}
-        onClick={()=>onClick(false)}      
-
+        onClick={() => onClick(false)}
         className={({ isActive, isPending }) =>
           isPending
             ? "pending"
@@ -51,7 +50,23 @@ const NavItem = ({ item, onClick }) => {
       >
         {name}
       </NavLink>
-   
+    );
+  }
+
+  return (
+    <NavLink
+      key={name}
+      to={to}
+      className={({ isActive, isPending }) =>
+        isPending
+          ? "pending"
+          : isActive
+          ? "-mx-3 rounded-lg px-3 py-2  font-bold leading-7 text-accent200 hover:bg-bg200"
+          : "-mx-3 rounded-lg px-3 py-2  font-bold leading-7 hover:bg-bg200"
+      }
+    >
+      {name}
+    </NavLink>
   );
 };
 
