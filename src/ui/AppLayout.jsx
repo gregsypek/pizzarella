@@ -13,10 +13,11 @@ function AppLayout() {
   const currentPage = location.pathname;
 
   let footerType;
+  //for now is the same but  I leave this for future changes :)
   if (currentPage === "/order/new") {
     footerType = "bg-bg200";
   } else {
-    footerType = "bg-bg100";
+    footerType = "bg-bg200";
   }
   return (
     // <div className="relative mx-auto flex-1  flex-col overflow-x-hidden bg-bg100">

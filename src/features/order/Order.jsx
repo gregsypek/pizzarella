@@ -46,7 +46,7 @@ function Order({ bgColor }) {
           </div>
         </div>
       </div>
-      <main className="container mx-auto my-12 flex-col   bg-bg100   pe-6 ps-0 sm:ps-12">
+      <main className="container mx-auto my-12 flex-col   mb-32 bg-bg100   pe-6 ps-0 sm:ps-12">
         <div className="lg:items-left  flex flex-col items-start justify-start  gap-10 overflow-x-hidden  lg:flex-row lg:items-end ">
           <div className=" self-start  ps-6 sm:p-0 lg:w-2/3">
             <div className="flex flex-wrap items-center justify-between gap-2 py-5">
@@ -99,10 +99,10 @@ function Order({ bgColor }) {
          
         </div>
       </main>
-      <div
+      {/* <div
         className={` ${bgColor ? bgColor : ""}  
 				  h-[150px] hidden lg:block w-screen`}
-      />
+      /> */}
     </>
   );
 }

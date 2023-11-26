@@ -39,12 +39,7 @@ const NavItem = ({ item, onClick }) => {
       <NavLink
         key={name}
         to={to}
-        onClick={()=>onClick(false)}
-        // className={`text-text-200  ${({ isActive }) =>
-        //   isActive
-        //     ? "text-accent200"
-        //     : ""} -mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:text-accent200`}
-        // >
+        onClick={()=>onClick(false)}      
 
         className={({ isActive, isPending }) =>
           isPending
